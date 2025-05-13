@@ -1,0 +1,96 @@
+
+  .footer-section {
+    background-color: #222;
+    color: #f5f5f5;
+  }
+  
+  .ticker-container {
+    background-color: #111;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+  
+  .ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .ticker-content {
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+    color: #d4af37;
+    font-weight: 500;
+  }
+  
+  @keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .main-footer {
+    background-color: #222;
+  }
+  
+  .footer-logo {
+    max-height: 60px;
+  }
+  
+  .footer-heading {
+    color: #d4af37;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-heading:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #d4af37;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links a:hover {
+    color: #d4af37;
+    text-decoration: none;
+  }
+  
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: all 0.3s;
+  }
+  
+  .social-icons a:hover {
+    background-color: #d4af37;
+    color: #222;
+  }
+  
+  .contact-info i {
+    color: #d4af37;
+  }
+  
+  .copyright-section {
+    background-color: #111;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+  }
