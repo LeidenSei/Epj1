@@ -14,6 +14,8 @@ import { ContactComponent } from './components/components/contact/contact.compon
 import { GalleryComponent } from './components/components/gallery/gallery.component';
 import { TechnologyComponent } from './components/components/technology/technology.component';
 import { SupportComponent } from './components/components/support/support.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,14 @@ import { SupportComponent } from './components/components/support/support.compon
     ContactComponent,
     GalleryComponent,
     TechnologyComponent,
-    SupportComponent
+    SupportComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

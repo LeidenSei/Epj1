@@ -1,0 +1,718 @@
+{
+    "company": {
+      "name": "Alberto Watch Company",
+      "slogan": "Excellence in Timekeeping",
+      "founded": 1998,
+      "description": "Alberto Watch Company is a full-service watch repair, appraisal, and retail store offering the finest selection of luxury timepieces. Offering an unparalleled selection with first-class service.",
+      "contact": {
+        "email": "info@albertoclocks.com",
+        "phone": "+84 123 456 7890",
+        "address": "123 Watch Street, Luxury District, Hanoi, Vietnam"
+      },
+      "socialMedia": {
+        "facebook": "facebook.com/albertoclocks",
+        "instagram": "instagram.com/albertoclocks",
+        "twitter": "twitter.com/albertoclocks",
+        "linkedin": "linkedin.com/company/albertoclocks"
+      },
+      "openingHours": {
+        "weekdays": "9:00 AM - 7:00 PM",
+        "saturday": "10:00 AM - 6:00 PM",
+        "sunday": "Closed"
+      }
+    },
+    "statistics": {
+      "yearsInBusiness": 25,
+      "watchesRepaired": 15000,
+      "brandsAvailable": 500,
+      "satisfiedCustomers": 8700,
+      "visitorsCount": 1256
+    },
+    "services": [
+      {
+        "id": "repair",
+        "name": "Watch Repair",
+        "description": "Our expert watchmakers can repair and restore any timepiece to its original condition, from simple battery replacements to complex movement overhauls.",
+        "image": "assets/images/services/repair.jpg",
+        "features": [
+          "Battery Replacement",
+          "Movement Overhaul",
+          "Water Resistance Testing",
+          "Crystal Replacement",
+          "Band Adjustment",
+          "Polishing"
+        ],
+        "pricing": {
+          "basic": {
+            "name": "Basic Service",
+            "price": "90",
+            "description": "Battery replacement, water resistance testing, and basic cleaning."
+          },
+          "standard": {
+            "name": "Standard Service",
+            "price": "250",
+            "description": "Full cleaning, lubrication, and precision timing adjustment."
+          },
+          "premium": {
+            "name": "Premium Overhaul",
+            "price": "500",
+            "description": "Complete disassembly, cleaning, replacement of worn parts, and reassembly."
+          }
+        }
+      },
+      {
+        "id": "appraisal",
+        "name": "Watch Appraisal",
+        "description": "Get an accurate valuation of your timepiece from our certified appraisers, perfect for insurance, resale, or simply understanding the value of your collection.",
+        "image": "assets/images/services/appraisal.jpg",
+        "features": [
+          "Certified Valuation",
+          "Detailed Documentation",
+          "Authentication",
+          "Condition Assessment",
+          "Market Analysis",
+          "Resale Consultation"
+        ],
+        "pricing": {
+          "basic": {
+            "name": "Single Watch Appraisal",
+            "price": "120",
+            "description": "Detailed appraisal for one timepiece."
+          },
+          "standard": {
+            "name": "Collection Appraisal (3-5 watches)",
+            "price": "300",
+            "description": "Comprehensive appraisal for small collections."
+          },
+          "premium": {
+            "name": "Premium Collection (6+ watches)",
+            "price": "500",
+            "description": "Complete appraisal service for larger collections with detailed documentation."
+          }
+        }
+      },
+      {
+        "id": "maintenance",
+        "name": "Watch Maintenance",
+        "description": "Regular maintenance ensures your timepiece functions properly and looks its best for years to come.",
+        "image": "assets/images/services/maintenance.jpg",
+        "features": [
+          "Ultrasonic Cleaning",
+          "Precision Timing",
+          "Gasket Replacement",
+          "Waterproof Testing",
+          "Band Adjustment",
+          "Polishing and Finishing"
+        ],
+        "pricing": {
+          "basic": {
+            "name": "Basic Maintenance",
+            "price": "75",
+            "description": "External cleaning, water resistance check, and timing verification."
+          },
+          "standard": {
+            "name": "Standard Maintenance",
+            "price": "150",
+            "description": "Comprehensive cleaning, timing adjustment, and gasket check."
+          },
+          "premium": {
+            "name": "Annual Service Plan",
+            "price": "350",
+            "description": "Quarterly check-ups and one complete service per year."
+          }
+        }
+      }
+    ],
+    "categories": [
+      {
+        "id": "vintage",
+        "name": "Vintage Collection",
+        "description": "Our vintage collection features meticulously restored timepieces that capture the essence of watchmaking history. Each piece tells a story of craftsmanship and design excellence from bygone eras.",
+        "image": "assets/images/categories/vintage.jpg",
+        "features": [
+          "Mechanical Movement",
+          "Classic Designs",
+          "Restored Pieces",
+          "Collectible Value",
+          "Historical Significance"
+        ]
+      },
+      {
+        "id": "luxury",
+        "name": "Luxury Collection",
+        "description": "Our luxury collection represents the pinnacle of horological excellence. Featuring prestigious brands like Rolex, Omega, and Patek Philippe, these timepieces combine exquisite craftsmanship with timeless elegance.",
+        "image": "assets/images/categories/luxury.jpg",
+        "features": [
+          "Swiss Automatic Movements",
+          "Premium Materials",
+          "Superior Craftsmanship",
+          "Brand Prestige",
+          "Investment Value"
+        ]
+      },
+      {
+        "id": "smart",
+        "name": "Smart Watches",
+        "description": "Our smart watch collection brings together cutting-edge technology and sophisticated design. These modern timepieces offer fitness tracking, notifications, and apps while maintaining the elegant aesthetic of a premium watch.",
+        "image": "assets/images/categories/smart.jpg",
+        "features": [
+          "Fitness Tracking",
+          "Smartphone Integration",
+          "Health Monitoring",
+          "Touchscreen Display",
+          "App Ecosystem"
+        ]
+      }
+    ],
+    "products": [
+      {
+        "id": "rolex-submariner",
+        "name": "Rolex Submariner Date",
+        "brand": "Rolex",
+        "categoryId": "luxury",
+        "price": 12500,
+        "discount": null,
+        "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+        "features": [
+          "Automatic movement with date function",
+          "41mm Oystersteel case",
+          "Water resistant to 300 meters",
+          "Unidirectional rotating bezel",
+          "Scratch-resistant sapphire crystal",
+          "Luminous hour markers and hands"
+        ],
+        "specifications": {
+          "movement": "Automatic",
+          "caseSize": "41mm",
+          "waterResistance": "300m",
+          "material": "Oystersteel",
+          "features": ["Date", "Rotating Bezel"]
+        },
+        "images": [
+          "assets/images/products/rolex-submariner-1.jpg",
+          "assets/images/products/rolex-submariner-2.jpg",
+          "assets/images/products/rolex-submariner-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "5 years"
+      },
+      {
+        "id": "omega-speedmaster",
+        "name": "Omega Speedmaster Professional",
+        "brand": "Omega",
+        "categoryId": "vintage",
+        "price": 4850,
+        "discount": null,
+        "description": "The legendary Omega Speedmaster Professional, also known as the 'Moonwatch', has been part of all six lunar missions. Its robust design and precision chronograph movement make it a favorite among collectors and space enthusiasts alike.",
+        "features": [
+          "Manual-winding chronograph movement",
+          "42mm stainless steel case",
+          "Water resistant to 50 meters",
+          "Tachymeter scale on the bezel",
+          "Hesalite crystal",
+          "30-minute and 12-hour recorders"
+        ],
+        "specifications": {
+          "movement": "Manual",
+          "caseSize": "42mm",
+          "waterResistance": "50m",
+          "material": "Stainless Steel",
+          "features": ["Chronograph"]
+        },
+        "images": [
+          "assets/images/products/omega-speedmaster-1.jpg",
+          "assets/images/products/omega-speedmaster-2.jpg",
+          "assets/images/products/omega-speedmaster-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "2 years"
+      },
+      {
+        "id": "apple-watch-7",
+        "name": "Apple Watch Series 7",
+        "brand": "Apple",
+        "categoryId": "smart",
+        "price": 799,
+        "discount": 10,
+        "description": "The Apple Watch Series 7 features the largest, most advanced display yet, making it easier to use and read. With its powerful health and fitness features, it's designed to help you stay connected, active, and healthy.",
+        "features": [
+          "Always-On Retina display",
+          "Blood oxygen sensor",
+          "ECG app",
+          "Water resistant to 50 meters",
+          "Fall detection and Emergency SOS",
+          "GPS and cellular connectivity"
+        ],
+        "specifications": {
+          "display": "Retina",
+          "caseSize": "45mm",
+          "waterResistance": "50m",
+          "material": "Titanium",
+          "features": ["GPS", "Heart Rate"]
+        },
+        "images": [
+          "assets/images/products/apple-watch-1.jpg",
+          "assets/images/products/apple-watch-2.jpg",
+          "assets/images/products/apple-watch-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "1 year"
+      },
+      {
+        "id": "tag-heuer-carrera",
+        "name": "TAG Heuer Carrera Chronograph",
+        "brand": "TAG Heuer",
+        "categoryId": "luxury",
+        "price": 9200,
+        "discount": null,
+        "description": "The TAG Heuer Carrera Chronograph is a racing-inspired timepiece that combines sporty aesthetics with sophisticated design. Its precision chronograph movement and elegant styling make it perfect for both formal occasions and everyday wear.",
+        "features": [
+          "Automatic chronograph movement",
+          "44mm stainless steel case",
+          "Water resistant to 100 meters",
+          "Tachymeter scale on the bezel",
+          "Sapphire crystal with anti-reflective coating",
+          "Date window at 3 o'clock"
+        ],
+        "specifications": {
+          "movement": "Automatic",
+          "caseSize": "44mm",
+          "waterResistance": "100m",
+          "material": "Stainless Steel",
+          "features": ["Chronograph", "Date"]
+        },
+        "images": [
+          "assets/images/products/tag-heuer-carrera-1.jpg",
+          "assets/images/products/tag-heuer-carrera-2.jpg",
+          "assets/images/products/tag-heuer-carrera-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "2 years"
+      },
+      {
+        "id": "jaeger-lecoultre-reverso",
+        "name": "Jaeger-LeCoultre Reverso Classic",
+        "brand": "Jaeger-LeCoultre",
+        "categoryId": "vintage",
+        "price": 3750,
+        "discount": null,
+        "description": "The Jaeger-LeCoultre Reverso is an Art Deco icon with its unique reversible case originally designed for polo players. Its elegant design and innovative engineering have made it a timeless classic for almost a century.",
+        "features": [
+          "Manual-winding movement",
+          "38.5mm stainless steel case",
+          "Water resistant to 30 meters",
+          "Reversible case",
+          "Sapphire crystal",
+          "Alligator leather strap"
+        ],
+        "specifications": {
+          "movement": "Manual",
+          "caseSize": "38.5mm",
+          "waterResistance": "30m",
+          "material": "Stainless Steel",
+          "features": ["Reversible Case"]
+        },
+        "images": [
+          "assets/images/products/jaeger-lecoultre-reverso-1.jpg",
+          "assets/images/products/jaeger-lecoultre-reverso-2.jpg",
+          "assets/images/products/jaeger-lecoultre-reverso-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "2 years"
+      },
+      {
+        "id": "samsung-galaxy-watch-4",
+        "name": "Samsung Galaxy Watch 4",
+        "brand": "Samsung",
+        "categoryId": "smart",
+        "price": 450,
+        "discount": 15,
+        "description": "The Samsung Galaxy Watch 4 combines sophisticated health monitoring with elegant design. It features advanced sensors to track your body composition, heart rate, sleep patterns, and more, all while looking stylish on your wrist.",
+        "features": [
+          "AMOLED display",
+          "Body composition analysis",
+          "ECG monitoring",
+          "Advanced sleep tracking",
+          "Water resistant to 50 meters",
+          "Google Wear OS platform"
+        ],
+        "specifications": {
+          "display": "AMOLED",
+          "caseSize": "44mm",
+          "waterResistance": "50m",
+          "material": "Aluminum",
+          "features": ["ECG", "Body Composition"]
+        },
+        "images": [
+          "assets/images/products/samsung-galaxy-watch-1.jpg",
+          "assets/images/products/samsung-galaxy-watch-2.jpg",
+          "assets/images/products/samsung-galaxy-watch-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "1 year"
+      },
+      {
+        "id": "seiko-presage",
+        "name": "Seiko Presage Cocktail Time",
+        "brand": "Seiko",
+        "categoryId": "vintage",
+        "price": 425,
+        "discount": null,
+        "description": "The Seiko Presage Cocktail Time features a stunning sunburst dial inspired by the colors and textures of classic cocktails. It offers exceptional value with its reliable automatic movement and elegant design.",
+        "features": [
+          "Automatic movement",
+          "40.5mm stainless steel case",
+          "Water resistant to 50 meters",
+          "Sunburst dial",
+          "Date window at 3 o'clock",
+          "Hardlex crystal"
+        ],
+        "specifications": {
+          "movement": "Automatic",
+          "caseSize": "40.5mm",
+          "waterResistance": "50m",
+          "material": "Stainless Steel",
+          "features": ["Date", "Sunburst Dial"]
+        },
+        "images": [
+          "assets/images/products/seiko-presage-1.jpg",
+          "assets/images/products/seiko-presage-2.jpg",
+          "assets/images/products/seiko-presage-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "2 years"
+      },
+      {
+        "id": "grand-seiko-snowflake",
+        "name": "Grand Seiko Snowflake",
+        "brand": "Grand Seiko",
+        "categoryId": "luxury",
+        "price": 5800,
+        "discount": null,
+        "description": "The Grand Seiko Snowflake features a unique textured white dial inspired by the snow around the Shinshu Watch Studio. Its Spring Drive movement represents a perfect fusion of mechanical and electronic watchmaking technology.",
+        "features": [
+          "Spring Drive movement",
+          "41mm titanium case",
+          "Water resistant to 100 meters",
+          "Snowflake textured dial",
+          "Sapphire crystal with anti-reflective coating",
+          "Date and power reserve indicators"
+        ],
+        "specifications": {
+          "movement": "Spring Drive",
+          "caseSize": "41mm",
+          "waterResistance": "100m",
+          "material": "Titanium",
+          "features": ["Date", "Power Reserve"]
+        },
+        "images": [
+          "assets/images/products/grand-seiko-snowflake-1.jpg",
+          "assets/images/products/grand-seiko-snowflake-2.jpg",
+          "assets/images/products/grand-seiko-snowflake-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "3 years"
+      },
+      {
+        "id": "garmin-fenix-7",
+        "name": "Garmin Fenix 7 Sapphire",
+        "brand": "Garmin",
+        "categoryId": "smart",
+        "price": 899,
+        "discount": null,
+        "description": "The Garmin Fenix 7 Sapphire is the ultimate multisport GPS watch with advanced training features, maps, music, and long battery life. Built for the most demanding athletes and adventurers.",
+        "features": [
+          "Always-on display with touchscreen",
+          "GPS, GLONASS, and Galileo positioning",
+          "Up to 28 days battery life",
+          "Pre-loaded topographic maps",
+          "Advanced training metrics",
+          "Heart rate, pulse ox, and sleep tracking"
+        ],
+        "specifications": {
+          "display": "MIP",
+          "caseSize": "47mm",
+          "waterResistance": "100m",
+          "material": "Fiber-reinforced polymer",
+          "features": ["GPS", "Health Monitoring"]
+        },
+        "images": [
+          "assets/images/products/garmin-fenix-1.jpg",
+          "assets/images/products/garmin-fenix-2.jpg",
+          "assets/images/products/garmin-fenix-3.jpg"
+        ],
+        "inStock": true,
+        "warranty": "1 year"
+      }
+    ],
+    "storeLocations": [
+      {
+        "id": "main-store",
+        "name": "Alberto Clocks Main Boutique",
+        "address": "123 Watch Street, Luxury District, Hanoi, Vietnam",
+        "phone": "+84 123 456 7890",
+        "email": "mainstore@albertoclocks.com",
+        "coordinates": {
+          "latitude": 21.027640,
+          "longitude": 105.841430
+        },
+        "openingHours": {
+          "monday": "9:00 AM - 7:00 PM",
+          "tuesday": "9:00 AM - 7:00 PM",
+          "wednesday": "9:00 AM - 7:00 PM",
+          "thursday": "9:00 AM - 7:00 PM",
+          "friday": "9:00 AM - 7:00 PM",
+          "saturday": "10:00 AM - 6:00 PM",
+          "sunday": "Closed"
+        },
+        "services": ["Sales", "Repair", "Appraisal", "Maintenance"],
+        "image": "assets/images/stores/main-store.jpg"
+      },
+      {
+        "id": "luxury-boutique",
+        "name": "Alberto Luxury Watch Boutique",
+        "address": "456 Premium Avenue, Central District, Ho Chi Minh City, Vietnam",
+        "phone": "+84 987 654 3210",
+        "email": "luxury@albertoclocks.com",
+        "coordinates": {
+          "latitude": 10.776530,
+          "longitude": 106.700760
+        },
+        "openingHours": {
+          "monday": "10:00 AM - 8:00 PM",
+          "tuesday": "10:00 AM - 8:00 PM",
+          "wednesday": "10:00 AM - 8:00 PM",
+          "thursday": "10:00 AM - 8:00 PM",
+          "friday": "10:00 AM - 8:00 PM",
+          "saturday": "10:00 AM - 8:00 PM",
+          "sunday": "12:00 PM - 6:00 PM"
+        },
+        "services": ["Sales", "Appraisal"],
+        "image": "assets/images/stores/luxury-boutique.jpg"
+      },
+      {
+        "id": "service-center",
+        "name": "Alberto Watch Service Center",
+        "address": "789 Watchmaker Lane, Industrial Zone, Da Nang, Vietnam",
+        "phone": "+84 456 789 0123",
+        "email": "service@albertoclocks.com",
+        "coordinates": {
+          "latitude": 16.047080,
+          "longitude": 108.206230
+        },
+        "openingHours": {
+          "monday": "8:00 AM - 6:00 PM",
+          "tuesday": "8:00 AM - 6:00 PM",
+          "wednesday": "8:00 AM - 6:00 PM",
+          "thursday": "8:00 AM - 6:00 PM",
+          "friday": "8:00 AM - 6:00 PM",
+          "saturday": "9:00 AM - 5:00 PM",
+          "sunday": "Closed"
+        },
+        "services": ["Repair", "Maintenance", "Battery Replacement"],
+        "image": "assets/images/stores/service-center.jpg"
+      }
+    ],
+    "technologies": [
+      {
+        "id": "mechanical",
+        "name": "Mechanical Movements",
+        "description": "Mechanical movements represent the traditional art of watchmaking, where hundreds of tiny components work together to keep time without requiring a battery.",
+        "image": "assets/images/technologies/mechanical.jpg",
+        "details": [
+          "Powered by a mainspring",
+          "Components include balance wheel, escapement, and gear train",
+          "Requires regular winding (manual) or uses an automatic rotor",
+          "Appreciated for craftsmanship and heritage",
+          "Typical accuracy of +/- 5-10 seconds per day"
+        ],
+        "advantages": [
+          "No battery required",
+          "Can last for generations with proper maintenance",
+          "Smooth sweeping second hand",
+          "Appreciated by collectors and enthusiasts",
+          "Represents traditional watchmaking craftsmanship"
+        ],
+        "types": [
+          {
+            "name": "Manual Winding",
+            "description": "Requires daily winding by the wearer to power the watch."
+          },
+          {
+            "name": "Automatic",
+            "description": "Self-winds through the natural motion of the wearer's wrist."
+          }
+        ]
+      },
+      {
+        "id": "quartz",
+        "name": "Quartz Technology",
+        "description": "Quartz movements revolutionized the watch industry with their accuracy, reliability, and affordability. They use a battery to send an electrical current through a quartz crystal, creating precise vibrations.",
+        "image": "assets/images/technologies/quartz.jpg",
+        "details": [
+          "Powered by a battery",
+          "Uses vibrations of a quartz crystal",
+          "Typically accurate to +/- 15 seconds per month",
+          "Requires battery replacement every 1-3 years",
+          "Introduced in the late 1960s"
+        ],
+        "advantages": [
+          "Highly accurate timekeeping",
+          "Low maintenance",
+          "Affordable compared to mechanical movements",
+          "Resistant to position and temperature changes",
+          "Wide variety of functions available"
+        ],
+        "types": [
+          {
+            "name": "Standard Quartz",
+            "description": "Basic battery-powered movement with excellent accuracy."
+          },
+          {
+            "name": "High Frequency",
+            "description": "More precise versions used in some luxury brands."
+          },
+          {
+            "name": "Thermocompensated",
+            "description": "Adjusts for temperature variations for even greater accuracy."
+          }
+        ]
+      },
+      {
+        "id": "smart",
+        "name": "Smart Watch Technology",
+        "description": "Smart watches combine traditional timekeeping with modern technology, offering connectivity, health monitoring, and customizable applications in a wrist-worn device.",
+        "image": "assets/images/technologies/smart.jpg",
+        "details": [
+          "Combines watch functionality with computing capabilities",
+          "Features touchscreen displays",
+          "Connects to smartphones via Bluetooth",
+          "Includes sensors for health and activity tracking",
+          "Rechargeable battery lasting from 1-14 days"
+        ],
+        "advantages": [
+          "Multifunctional capabilities beyond timekeeping",
+          "Health and fitness tracking",
+          "Customizable through apps and watch faces",
+          "Notifications and communication features",
+          "GPS and navigation capabilities"
+        ],
+        "types": [
+          {
+            "name": "Full Smart Watches",
+            "description": "Complete computing platforms with app ecosystems (Apple Watch, Samsung Galaxy Watch)."
+          },
+          {
+            "name": "Hybrid Smart Watches",
+            "description": "Traditional watch appearance with hidden smart features."
+          },
+          {
+            "name": "Fitness Focused",
+            "description": "Specialized for athletic performance tracking and training."
+          }
+        ]
+      },
+      {
+        "id": "spring-drive",
+        "name": "Spring Drive Technology",
+        "description": "Spring Drive is an innovative movement created by Seiko that combines the traditional mechanical power source with quartz regulation, resulting in a perfectly smooth second hand and exceptional accuracy.",
+        "image": "assets/images/technologies/spring-drive.jpg",
+        "details": [
+          "Powered by a mainspring like mechanical watches",
+          "Regulated by an electronic brake system",
+          "Glide wheel replaces traditional escapement",
+          "Accuracy of +/- 1 second per day",
+          "Developed by Seiko and exclusive to their luxury lines"
+        ],
+        "advantages": [
+          "Perfectly smooth second hand movement",
+          "Superior accuracy compared to traditional mechanical movements",
+          "No battery required",
+          "Highly resistant to temperature and position changes",
+          "Represents the pinnacle of traditional and modern watchmaking"
+        ],
+        "types": [
+          {
+            "name": "Standard Spring Drive",
+            "description": "The classic implementation found in Grand Seiko models."
+          },
+          {
+            "name": "Chronograph Spring Drive",
+            "description": "Incorporates chronograph functionality with the smooth Spring Drive movement."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "id": 1,
+        "question": "How often should I service my luxury watch?",
+        "answer": "Most luxury mechanical watches should be serviced every 3-5 years to maintain optimal performance. Quartz watches typically require less frequent maintenance, but should still be checked every 5-7 years for water resistance and general condition."
+      },
+      {
+        "id": 2,
+        "question": "What is water resistance in watches and what does it mean?",
+        "answer": "Water resistance ratings indicate how well a watch is protected against water intrusion. For example, 30m rating is splash resistant (not for swimming), 100m is suitable for swimming and snorkeling, and 200m+ is appropriate for scuba diving. Always check your specific watch's guidelines."
+      },
+      {
+        "id": 3,
+        "question": "How do I know if my vintage watch is valuable?",
+        "answer": "Several factors determine a vintage watch's value: brand reputation, model rarity, condition, originality of parts, historical significance, and documentation. For an accurate assessment, we recommend scheduling a professional appraisal with our experts."
+      },
+      {
+        "id": 4,
+        "question": "What's the difference between automatic and manual watches?",
+        "answer": "Both automatic and manual watches use mechanical movements. The key difference is that automatic watches have a rotor that winds the mainspring using the motion of your wrist, while manual watches must be hand-wound regularly using the crown."
+      },
+      {
+        "id": 5,
+        "question": "Do you repair all watch brands?",
+        "answer": "Yes, our skilled watchmakers can repair almost all watch brands, from common names to rare and vintage timepieces. We have specialized equipment and parts for most major manufacturers, including Rolex, Omega, Tag Heuer, Seiko, and many more."
+      },
+      {
+        "id": 6,
+        "question": "How long does a typical watch repair take?",
+        "answer": "Repair times vary depending on the complexity of the issue and parts availability. Simple repairs like battery replacements can be done while you wait. Basic services typically take 1-2 weeks, while complete overhauls or vintage restorations may take 4-8 weeks."
+      },
+      {
+        "id": 7,
+        "question": "Do smart watches hold their value like luxury watches?",
+        "answer": "Smart watches generally don't retain value as well as luxury mechanical watches due to rapid technological advancement and obsolescence. However, some limited edition models from leading brands might hold some value as collectibles."
+      },
+      {
+        "id": 8,
+        "question": "What payment methods do you accept?",
+        "answer": "We accept major credit cards, bank transfers, cash, and select cryptocurrency payments. For high-value purchases, we also offer financing options with approved credit."
+      }
+    ],
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "David Nguyen",
+        "title": "Watch Collector",
+        "image": "assets/images/testimonials/david.jpg",
+        "quote": "Alberto Watch Company restored my grandfather's Omega from the 1950s. The attention to detail was remarkable, and they managed to source original parts I thought were impossible to find. Truly masters of their craft."
+      },
+      {
+        "id": 2,
+        "name": "Sarah Johnson",
+        "title": "Business Executive",
+        "image": "assets/images/testimonials/sarah.jpg",
+        "quote": "I've purchased several timepieces from Alberto over the years. Their knowledge and passion for horology is evident in every interaction. They helped me find the perfect Rolex that fits both my style and investment goals."
+      },
+      {
+        "id": 3,
+        "name": "Michael Tran",
+        "title": "Technology Entrepreneur",
+        "image": "assets/images/testimonials/michael.jpg",
+        "quote": "When I needed to understand the differences between traditional and smart watches, Alberto's team provided unbiased, in-depth information that helped me make the right choice. Their after-sales service has been exceptional."
+      },
+      {
+        "id": 4,
+        "name": "Linh Pham",
+        "title": "Fashion Designer",
+        "image": "assets/images/testimonials/linh.jpg",
+        "quote": "The vintage Cartier I purchased from Alberto Watch Company has become my signature accessory. Their authentication process gave me complete confidence in my investment, and their regular maintenance keeps it running perfectly."
+      }
+    ]
+  }

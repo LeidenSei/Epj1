@@ -63,7 +63,6 @@
     </div>
   </header>
   <script>
-    // Script to add the 'scrolled' class when scrolling
     $(window).scroll(function() {
       if ($(this).scrollTop() > 100) {
         $('.header-sticky').addClass('scrolled');
@@ -71,14 +70,10 @@
         $('.header-sticky').removeClass('scrolled');
       }
     });
-    
-    // Mobile menu toggle
     $('.menu-trigger').on('click', function() {
       $(this).toggleClass('active');
       $('.nav-menu').toggleClass('active');
     });
-    
-    // Mobile dropdown menu
     $('.nav-item.dropdown > a').on('click', function(e) {
       if ($(window).width() < 992) {
         e.preventDefault();
