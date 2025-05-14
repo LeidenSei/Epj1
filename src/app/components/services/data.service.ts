@@ -145,15 +145,13 @@ export class DataService {
     );
   }
   
-  getStoreLocatorPageData(): Observable<{
-    storeLocations: StoreLocation[]
-  }> {
-    return this.getData().pipe(
-      map(data => {
-        return {
-          storeLocations: data.storeLocations
-        };
-      })
-    );
+  getStoreLocatorPageData(): Observable<any> {
+    return this.http.get(this.dataUrl);
+  }
+  getGalleryData(): Observable<any> {
+    return this.http.get<any>(this.dataUrl);
+  }
+  getContactPageData(): Observable<any> {
+    return this.http.get<any>(this.dataUrl);
   }
 }

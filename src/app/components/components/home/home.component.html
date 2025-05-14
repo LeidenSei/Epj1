@@ -1,4 +1,4 @@
-<!-- Loading state -->
+
 <div class="loading-container" *ngIf="loading">
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
@@ -6,14 +6,11 @@
   <p>Loading amazing watches...</p>
 </div>
 
-<!-- Error message -->
 <div class="alert alert-danger" *ngIf="error">
   {{ error }}
 </div>
 
-<!-- Main content when data is loaded -->
 <div *ngIf="!loading && !error">
-  <!-- Banner Section with Owl Carousel -->
   <div class="main-banner">
     <div class="owl-carousel owl-banner">
       <div class="item item-1">
@@ -265,7 +262,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <img [src]="'assets/images/' + category.id + '-watch.jpg'" [alt]="category.name">
+                      <img [src]="'assets/images/categories/' + category.id + '.jpg'" [alt]="category.name">
                     </div>
                     <div class="col-lg-3">
                       <h4>{{ category.name }}</h4>
@@ -366,35 +363,44 @@
           </div>
         </div>
         <div class="col-lg-5">
-          <form id="contact-form" action="" method="post">
+          <form id="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm()">
             <div class="row">
               <div class="col-lg-12">
                 <fieldset>
                   <label for="name">Full Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                  <input type="text" formControlName="name" id="name" placeholder="Your Name..." autocomplete="on">
+                  <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched" class="text-danger">
+                    Name is required
+                  </div>
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
                   <label for="email">Email Address</label>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
+                  <input type="email" formControlName="email" id="email" placeholder="Your E-mail...">
+                  <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched" class="text-danger">
+                    Valid email is required
+                  </div>
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
                   <label for="subject">Subject</label>
-                  <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
+                  <input type="text" formControlName="subject" id="subject" placeholder="Subject..." autocomplete="on">
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
                   <label for="message">Message</label>
-                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                  <textarea formControlName="message" id="message" placeholder="Your Message"></textarea>
+                  <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched" class="text-danger">
+                    Message is required
+                  </div>
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
+                  <button type="submit" id="form-submit" class="orange-button" [disabled]="contactForm.invalid">Send Message</button>
                 </fieldset>
               </div>
             </div>

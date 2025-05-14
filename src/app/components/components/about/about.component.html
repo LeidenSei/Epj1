@@ -1,164 +1,146 @@
-<div class="all-title-box">
+<div class="page-heading header-text">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>ABOUT US</h2>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">ABOUT US</li>
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>ABOUT US</h2>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active">About Us</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading-container" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p>Loading information...</p>
+  </div>
+  
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+  
+  <div class="about-box-main" *ngIf="!loading && !error">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="banner-frame">
+            <img class="img-fluid" src="assets/images/about-alberto.jpg" alt="Alberto Watch Company" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h2 class="noo-sh-title-top">Welcome to <span>{{ companyInfo?.name || 'Alberto Watch Company' }}</span></h2>
+          <p>{{ companyInfo?.description || 'Alberto Watch Company is a full-service watch repair, appraisal, and retail store offering the finest selection of luxury timepieces. Founded with a passion for exceptional craftsmanship, we provide an unparalleled selection with first-class service.' }}</p>
+          <p>Since our founding in {{ companyInfo?.founded || '1998' }}, we have built a reputation for excellence in both our products and services. Our team of certified watchmakers and horology experts are dedicated to preserving the art of fine watchmaking and delivering an exceptional experience to every customer.</p>
+          <p>We also carry a wide selection of brand new watches such as Michael Kors, Rolex, Citizen Eco-Drive, Bulova and more!</p>
+          <a class="btn hvr-hover" [routerLink]="['/products']">Explore Our Collection</a>
+        </div>
+      </div>
+      
+      <div class="row my-5">
+        <div class="col-sm-6 col-lg-4">
+          <div class="service-block-inner">
+            <h3>Certified Expertise</h3>
+            <p>Our master watchmakers have received training from prestigious institutes and have decades of combined experience with luxury timepieces. We handle each watch with precision and care, ensuring your valuable investment is in good hands.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="service-block-inner">
+            <h3>Exceptional Service</h3>
+            <p>We believe in providing personalized attention to every customer. From helping you select the perfect watch to match your style, to educating you about the intricate mechanics of your timepiece, we're dedicated to your satisfaction.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="service-block-inner">
+            <h3>Luxury Collection</h3>
+            <p>Our carefully curated collection features timepieces from the world's most prestigious brands. Whether you're searching for a classic vintage piece or the latest smartwatch technology, we offer only the finest quality watches.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row my-5" *ngIf="statistics">
+        <div class="col-12">
+          <h2 class="noo-sh-title">Our Achievements</h2>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-box">
+            <div class="stat-number">{{ statistics.yearsInBusiness }}</div>
+            <div class="stat-title">Years in Business</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-box">
+            <div class="stat-number">{{ statistics.watchesRepaired }}</div>
+            <div class="stat-title">Watches Repaired</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-box">
+            <div class="stat-number">{{ statistics.brandsAvailable }}</div>
+            <div class="stat-title">Brands Available</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-box">
+            <div class="stat-number">{{ statistics.satisfiedCustomers }}</div>
+            <div class="stat-title">Satisfied Customers</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Section -->
+      <div class="row my-4">
+        <div class="col-12">
+          <h2 class="noo-sh-title">Meet Our Team</h2>
+        </div>
+        <div class="col-sm-6 col-lg-3" *ngFor="let member of teamMembers">
+            <div class="hover-team">
+              <div class="our-team">
+                <img [src]="member.image || 'assets/images/default-avatar.jpg'" [alt]="member.name">
+                <div class="team-content">
+                  <h3 class="title">{{ member.name }}</h3>
+                  <span class="post">{{ member.title }}</span>
+                </div>
+                <ul class="social">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
+              </div>
+              <div class="team-description">
+                <p>{{ member.quote }}</p>
+              </div>
             </div>
+          </div>
+      </div>
+      
+      <!-- Store Information -->
+      <div class="row my-5">
+        <div class="col-12">
+          <h2 class="noo-sh-title">Visit Our Store</h2>
         </div>
+        <div class="col-md-6">
+          <div class="store-info">
+            <h4>Main Boutique</h4>
+            <p><i class="fas fa-map-marker-alt"></i> {{ companyInfo?.contact?.address || '123 Watch Street, Luxury District, Hanoi, Vietnam' }}</p>
+            <p><i class="fas fa-phone"></i> {{ companyInfo?.contact?.phone || '+84 123 456 7890' }}</p>
+            <p><i class="fas fa-envelope"></i> {{ companyInfo?.contact?.email || 'info@albertoclocks.com' }}</p>
+            
+            <h5>Opening Hours</h5>
+            <p><i class="fas fa-clock"></i> Weekdays: {{ companyInfo?.openingHours?.weekdays || '9:00 AM - 7:00 PM' }}</p>
+            <p><i class="fas fa-clock"></i> Saturday: {{ companyInfo?.openingHours?.saturday || '10:00 AM - 6:00 PM' }}</p>
+            <p><i class="fas fa-clock"></i> Sunday: {{ companyInfo?.openingHours?.sunday || 'Closed' }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1155335517404!2d105.84115007599775!3d21.02754148052354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9b4a79fa85%3A0xd4c01582479b0553!2sHoan%20Kiem%20Lake!5e0!3m2!1sen!2s!4v1684210063387!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<!-- End All Title Box -->
-
-<!-- Start About Page  -->
-<div class="about-box-main">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="banner-frame"> <img class="img-fluid" src="images/about-img.jpg" alt="" />
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2 class="noo-sh-title-top">We are <span>Freshshop</span></h2>
-                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                    voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a class="btn hvr-hover" href="#">Read More</a>
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-sm-6 col-lg-4">
-                <div class="service-block-inner">
-                    <h3>We are Trusted</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="service-block-inner">
-                    <h3>We are Professional</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="service-block-inner">
-                    <h3>We are Expert</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                </div>
-            </div>
-        </div>
-        <div class="row my-4">
-            <div class="col-12">
-                <h2 class="noo-sh-title">Meet Our Team</h2>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="hover-team">
-                    <div class="our-team"> <img src="images/img-1.jpg" alt="" />
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
-                        <ul class="social">
-                            <li>
-                                <a href="#" class="fab fa-facebook"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-twitter"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-google-plus"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-youtube"></a>
-                            </li>
-                        </ul>
-                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
-                    </div>
-                    <div class="team-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
-                    </div>
-                    <hr class="my-0"> </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="hover-team">
-                    <div class="our-team"> <img src="images/img-2.jpg" alt="" />
-                        <div class="team-content">
-                            <h3 class="title">Kristiana</h3> <span class="post">Web Developer</span> </div>
-                        <ul class="social">
-                            <li>
-                                <a href="#" class="fab fa-facebook"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-twitter"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-google-plus"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-youtube"></a>
-                            </li>
-                        </ul>
-                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
-                    </div>
-                    <div class="team-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
-                    </div>
-                    <hr class="my-0"> </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="hover-team">
-                    <div class="our-team"> <img src="images/img-3.jpg" alt="" />
-                        <div class="team-content">
-                            <h3 class="title">Steve Thomas</h3> <span class="post">Web Developer</span> </div>
-                        <ul class="social">
-                            <li>
-                                <a href="#" class="fab fa-facebook"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-twitter"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-google-plus"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-youtube"></a>
-                            </li>
-                        </ul>
-                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
-                    </div>
-                    <div class="team-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
-                    </div>
-                    <hr class="my-0"> </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="hover-team">
-                    <div class="our-team"> <img src="images/img-1.jpg" alt="" />
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
-                        <ul class="social">
-                            <li>
-                                <a href="#" class="fab fa-facebook"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-twitter"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-google-plus"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="fab fa-youtube"></a>
-                            </li>
-                        </ul>
-                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
-                    </div>
-                    <div class="team-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
-                    </div>
-                    <hr class="my-0"> </div>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>

@@ -1,1 +1,261 @@
-<p>store-locator works!</p>
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Our Store Locations</h2>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active">Store Locator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading-container" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p>Loading store locations...</p>
+  </div>
+  
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+  
+  <div class="store-locator-section" *ngIf="!loading && !error">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="locator-intro">
+            <h3>Find an Alberto Watch Company Location Near You</h3>
+            <p>Visit one of our boutiques to explore our collections, receive expert advice, or access our professional watch services.</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row search-filter-section">
+        <div class="col-lg-8 col-md-7">
+          <div class="search-box">
+            <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Search by name or address..." 
+              [(ngModel)]="searchKeyword"
+              (input)="onSearchChange()">
+            <button class="search-btn" (click)="onSearchChange()">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-5">
+          <div class="filter-dropdown">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter by Services
+                <ng-container *ngIf="selectedServices.length > 0">
+                  <span class="badge">{{ selectedServices.length }}</span>
+                </ng-container>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <ng-container *ngFor="let service of services">
+                  <li>
+                    <label class="dropdown-item">
+                      <input type="checkbox" 
+                             [checked]="selectedServices.includes(service)" 
+                             (change)="toggleService(service)"> 
+                      {{ service }}
+                    </label>
+                  </li>
+                </ng-container>
+                
+                <ng-container *ngIf="selectedServices.length > 0">
+                  <li>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item clear-btn" (click)="clearFilters()">
+                      <i class="fa fa-times"></i> Clear Filters
+                    </button>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row map-list-section">
+        <div class="col-lg-4 store-list-col">
+          <div class="store-list-container">
+            <h4>Our Locations <span class="count-badge">{{ filteredLocations.length }}</span></h4>
+            
+            <div class="store-list">
+              <ng-container *ngIf="filteredLocations.length === 0">
+                <div class="no-results">
+                  <p>No stores found. Please try different search criteria.</p>
+                  <button class="btn reset-btn" (click)="clearFilters()">
+                    <i class="fa fa-redo"></i> Reset Filters
+                  </button>
+                </div>
+              </ng-container>
+              
+              <ng-container *ngFor="let store of filteredLocations">
+                <div class="store-item" 
+                     [class.active]="selectedLocation?.id === store.id"
+                     (click)="selectStore(store)">
+                  <div class="store-header">
+                    <h5>{{ store.name }}</h5>
+                    <span class="status-badge" [class.open]="isStoreOpen(store)">
+                      {{ isStoreOpen(store) ? 'Open' : 'Closed' }}
+                    </span>
+                  </div>
+                  <p class="store-address">
+                    <i class="fa fa-map-marker-alt"></i> {{ store.address }}
+                  </p>
+                  <p class="store-phone">
+                    <i class="fa fa-phone"></i> 
+                    <a [href]="'tel:' + store.phone">{{ store.phone }}</a>
+                  </p>
+                  <div class="store-services">
+                    <ng-container *ngFor="let service of store.services.slice(0, 3)">
+                      <span class="service-tag">{{ service }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="store.services.length > 3">
+                      <span class="more-tag">+{{ store.services.length - 3 }} more</span>
+                    </ng-container>
+                  </div>
+                  <button class="btn details-btn">View Details</button>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-8 map-col">
+            <div class="map-container">
+                <div id="store-map" class="store-map">
+                  <iframe 
+                    [src]="('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.1155335517404!2d' + 
+                           (selectedLocation?.coordinates.longitude || 105.841430) + 
+                           '!3d' + (selectedLocation?.coordinates.latitude || 21.027640) + 
+                           '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9b4a79fa85%3A0xd4c01582479b0553!2sHoan%20Kiem%20Lake!5e0!3m2!1sen!2s!4v1684210063387!5m2!1sen!2s') | safe" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen=""
+                    loading="lazy">
+                  </iframe>
+                </div>
+              </div>
+        </div>
+      </div>
+  
+      <div class="row store-detail-section" *ngIf="selectedLocation">
+        <div class="col-lg-12">
+          <div class="store-detail-container">
+            <h3>{{ selectedLocation.name }}</h3>
+            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="store-image">
+                  <img [src]="selectedLocation.image" [alt]="selectedLocation.name">
+                </div>
+              </div>
+              
+              <div class="col-md-8">
+                <div class="store-info">
+                  <div class="info-item">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <div>
+                      <h5>Address</h5>
+                      <p>{{ selectedLocation.address }}</p>
+                      <a [href]="'https://www.google.com/maps/search/?api=1&query=' + 
+                                 selectedLocation.coordinates.latitude + ',' + 
+                                 selectedLocation.coordinates.longitude" 
+                         target="_blank" 
+                         class="directions-link">
+                        <i class="fa fa-directions"></i> Get Directions
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <i class="fa fa-phone"></i>
+                    <div>
+                      <h5>Phone</h5>
+                      <p><a [href]="'tel:' + selectedLocation.phone">{{ selectedLocation.phone }}</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <i class="fa fa-envelope"></i>
+                    <div>
+                      <h5>Email</h5>
+                      <p><a [href]="'mailto:' + selectedLocation.email">{{ selectedLocation.email }}</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <i class="fa fa-clock"></i>
+                    <div>
+                      <h5>Opening Hours</h5>
+                      <div class="hours-grid">
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'monday'">
+                          <span class="day">Monday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.monday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'tuesday'">
+                          <span class="day">Tuesday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.tuesday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'wednesday'">
+                          <span class="day">Wednesday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.wednesday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'thursday'">
+                          <span class="day">Thursday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.thursday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'friday'">
+                          <span class="day">Friday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.friday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'saturday'">
+                          <span class="day">Saturday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.saturday }}</span>
+                        </div>
+                        <div class="day-row" [class.current-day]="getCurrentDay() === 'sunday'">
+                          <span class="day">Sunday</span>
+                          <span class="hours">{{ selectedLocation.openingHours.sunday }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <i class="fa fa-tools"></i>
+                    <div>
+                      <h5>Services Available</h5>
+                      <div class="services-list">
+                        <ng-container *ngFor="let service of selectedLocation.services">
+                          <span class="service-badge">{{ service }}</span>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="store-actions">
+                    <a [routerLink]="['/contact']" class="btn contact-btn">
+                      <i class="fa fa-envelope"></i> Contact Store
+                    </a>
+                    <a [href]="'tel:' + selectedLocation.phone" class="btn call-btn">
+                      <i class="fa fa-phone"></i> Call Store
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

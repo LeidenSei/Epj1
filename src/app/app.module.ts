@@ -16,6 +16,8 @@ import { TechnologyComponent } from './components/components/technology/technolo
 import { SupportComponent } from './components/components/support/support.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SafePipe } from './shared/pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { RouterModule } from '@angular/router';
     GalleryComponent,
     TechnologyComponent,
     SupportComponent,
-    
+    SafePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

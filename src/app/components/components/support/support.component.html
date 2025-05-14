@@ -1,1 +1,367 @@
-<p>support works!</p>
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 style="color: #d4af37;">Customer Support</h2>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active">Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="loading-container" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p>Loading support information...</p>
+  </div>
+  
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="support-section" *ngIf="!loading && !error">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="support-intro">
+            <h3>How Can We Help You?</h3>
+            <p>At Alberto Watch Company, we're committed to providing exceptional support to our customers. Whether you need assistance with watch repairs, maintenance inquiries, or guidance on choosing the perfect timepiece, we're here to help.</p>
+            <p>Explore our support resources below or contact our expert team directly.</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row services-section">
+        <div class="col-lg-12">
+          <h3 class="section-title">Our Services</h3>
+          <p class="section-description">We offer a range of professional services to keep your timepieces in perfect condition.</p>
+        </div>
+        
+        <div class="col-lg-12">
+          <ul class="nav nav-tabs service-tabs" role="tablist">
+            <li class="nav-item" *ngFor="let service of services; let i = index">
+              <button class="nav-link" 
+                      [class.active]="i === 0"
+                      [id]="service.id + '-tab'" 
+                      data-bs-toggle="tab" 
+                      [attr.data-bs-target]="'#' + service.id" 
+                      type="button" 
+                      role="tab" 
+                      [attr.aria-controls]="service.id" 
+                      [attr.aria-selected]="i === 0"
+                      (click)="setActiveService(i)">{{ service.name }}</button>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-12">
+          <div class="tab-content service-content">
+            <div class="tab-pane fade" 
+                 *ngFor="let service of services; let i = index"
+                 [class.show]="i === 0"
+                 [class.active]="i === 0"
+                 [id]="service.id" 
+                 role="tabpanel" 
+                 [attr.aria-labelledby]="service.id + '-tab'">
+              
+              <div class="row service-detail">
+                <div class="col-lg-4 col-md-12">
+                  <div class="service-image">
+                    <img [src]="service.image" [alt]="service.name">
+                  </div>
+                  <div class="service-features">
+                    <h4>Services Included</h4>
+                    <ul>
+                      <li *ngFor="let feature of service.features">{{ feature }}</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                  <div class="service-info">
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.description }}</p>
+                    
+                    <div class="service-pricing">
+                      <h4>Service Options & Pricing</h4>
+                      <div class="row">
+                        <div class="col-md-4" *ngIf="service.pricing.basic">
+                          <div class="price-card">
+                            <div class="price-header">
+                              <h5>{{ service.pricing.basic.name }}</h5>
+                              <div class="price">${{ service.pricing.basic.price }}</div>
+                            </div>
+                            <div class="price-body">
+                              <p>{{ service.pricing.basic.description }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4" *ngIf="service.pricing.standard">
+                          <div class="price-card featured">
+                            <div class="price-header">
+                              <h5>{{ service.pricing.standard.name }}</h5>
+                              <div class="price">${{ service.pricing.standard.price }}</div>
+                            </div>
+                            <div class="price-body">
+                              <p>{{ service.pricing.standard.description }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4" *ngIf="service.pricing.premium">
+                          <div class="price-card">
+                            <div class="price-header">
+                              <h5>{{ service.pricing.premium.name }}</h5>
+                              <div class="price">${{ service.pricing.premium.price }}</div>
+                            </div>
+                            <div class="price-body">
+                              <p>{{ service.pricing.premium.description }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                      <p>For appointments or detailed inquiries about our {{ service.name | lowercase }} services, please contact us.</p>
+                      <div class="buttons">
+                        <a href="#contact-form" class="btn primary-btn">Contact Us</a>
+                        <a [routerLink]="['/store-locator']" class="btn secondary-btn">Find a Store</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row faq-section">
+        <div class="col-lg-12">
+          <h3 class="section-title">Frequently Asked Questions</h3>
+          <p class="section-description">Find answers to the most common questions about our products and services.</p>
+        </div>
+        
+        <div class="col-lg-12">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item" *ngFor="let faq of faqs; let i = index">
+              <h2 class="accordion-header" [id]="'faqHeading' + i">
+                <button class="accordion-button" 
+                        [class.collapsed]="i !== 0" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        [attr.data-bs-target]="'#faqCollapse' + i" 
+                        [attr.aria-expanded]="i === 0" 
+                        [attr.aria-controls]="'faqCollapse' + i">
+                  {{ faq.question }}
+                </button>
+              </h2>
+              <div [id]="'faqCollapse' + i" 
+                   class="accordion-collapse collapse" 
+                   [class.show]="i === 0" 
+                   [attr.aria-labelledby]="'faqHeading' + i" 
+                   data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  {{ faq.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row contact-section" id="contact-form">
+        <div class="col-lg-12">
+          <h3 class="section-title">Contact Support</h3>
+          <p class="section-description">Can't find what you're looking for? Send us a message and we'll get back to you as soon as possible.</p>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="contact-form-container">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+              <div class="alert alert-success" *ngIf="formSuccess">
+                Thank you for your message! Our support team will contact you soon.
+              </div>
+  
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" formControlName="name" class="form-control" [class.is-invalid]="hasError('name', 'required') || hasError('name', 'minlength')">
+                <div class="invalid-feedback" *ngIf="hasError('name', 'required')">Name is required</div>
+                <div class="invalid-feedback" *ngIf="hasError('name', 'minlength')">Name must be at least 2 characters</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" formControlName="email" class="form-control" [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email')">
+                <div class="invalid-feedback" *ngIf="hasError('email', 'required')">Email is required</div>
+                <div class="invalid-feedback" *ngIf="hasError('email', 'email')">Please enter a valid email</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" formControlName="phone" class="form-control" [class.is-invalid]="hasError('phone', 'pattern')">
+                <div class="invalid-feedback" *ngIf="hasError('phone', 'pattern')">Please enter a valid phone number</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" formControlName="subject" class="form-control" [class.is-invalid]="hasError('subject', 'required')">
+                  <option value="">Select a subject</option>
+                  <option value="Watch Repair">Watch Repair</option>
+                  <option value="Product Inquiry">Product Inquiry</option>
+                  <option value="Warranty Claim">Warranty Claim</option>
+                  <option value="General Question">General Question</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="hasError('subject', 'required')">Please select a subject</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" formControlName="message" class="form-control" rows="5" [class.is-invalid]="hasError('message', 'required') || hasError('message', 'minlength')"></textarea>
+                <div class="invalid-feedback" *ngIf="hasError('message', 'required')">Message is required</div>
+                <div class="invalid-feedback" *ngIf="hasError('message', 'minlength')">Message must be at least 10 characters</div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn primary-btn" [disabled]="contactForm.invalid && formSubmitted">
+                  <i class="fa fa-paper-plane"></i> Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="contact-info">
+            <h4>Contact Information</h4>
+            <p>Our support team is available to assist you during business hours.</p>
+            
+            <div class="info-item">
+              <i class="fa fa-envelope"></i>
+              <div>
+                <h5>Email Us</h5>
+                <p><a [href]="'mailto:' + (companyInfo?.contact?.email || 'support@albertoclocks.com')">{{ companyInfo?.contact?.email || 'support@albertoclocks.com' }}</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <i class="fa fa-phone"></i>
+              <div>
+                <h5>Call Us</h5>
+                <p><a [href]="'tel:' + (companyInfo?.contact?.phone || '+84 123 456 7890')">{{ companyInfo?.contact?.phone || '+84 123 456 7890' }}</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <i class="fa fa-clock"></i>
+              <div>
+                <h5>Support Hours</h5>
+                <p>Weekdays: {{ companyInfo?.openingHours?.weekdays || '9:00 AM - 7:00 PM' }}</p>
+                <p>Saturday: {{ companyInfo?.openingHours?.saturday || '10:00 AM - 6:00 PM' }}</p>
+                <p>Sunday: {{ companyInfo?.openingHours?.sunday || 'Closed' }}</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <i class="fa fa-map-marker-alt"></i>
+              <div>
+                <h5>Visit Us</h5>
+                <p>{{ companyInfo?.contact?.address || '123 Watch Street, Luxury District, Hanoi, Vietnam' }}</p>
+                <a [routerLink]="['/store-locator']" class="location-link">View Store Locations</a>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <h5>Connect With Us</h5>
+              <div class="social-icons">
+                <a [href]="'https://' + companyInfo?.socialMedia?.facebook || '#'" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a [href]="'https://' + companyInfo?.socialMedia?.instagram || '#'" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a [href]="'https://' + companyInfo?.socialMedia?.twitter || '#'" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a [href]="'https://' + companyInfo?.socialMedia?.linkedin || '#'" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row warranty-cta">
+        <div class="col-lg-12">
+          <div class="cta-container">
+            <div class="cta-content">
+              <h3>Warranty & Service Policy</h3>
+              <p>Learn about our comprehensive warranty coverage and service policies for all our timepieces.</p>
+              <button class="btn primary-btn" data-bs-toggle="modal" data-bs-target="#warrantyModal">
+                <i class="fa fa-file-alt"></i> View Warranty Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="warrantyModal" tabindex="-1" aria-labelledby="warrantyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="warrantyModalLabel">Warranty & Service Policy</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Warranty Coverage</h4>
+          <p>All watches purchased from Alberto Watch Company come with the following warranty coverage:</p>
+          <ul>
+            <li><strong>Luxury Collection:</strong> 5-year international warranty</li>
+            <li><strong>Vintage Collection:</strong> 2-year warranty on movement and craftsmanship</li>
+            <li><strong>Smart Watches:</strong> 1-year manufacturer warranty</li>
+          </ul>
+          
+          <h4>What's Covered</h4>
+          <p>Our warranty covers manufacturing defects related to materials and workmanship under normal use. This includes:</p>
+          <ul>
+            <li>Movement defects</li>
+            <li>Battery issues (except for normal depletion)</li>
+            <li>Defective parts</li>
+            <li>Water resistance failure (within rated specifications)</li>
+          </ul>
+          
+          <h4>What's Not Covered</h4>
+          <p>The following are not covered by our warranty:</p>
+          <ul>
+            <li>Normal wear and tear</li>
+            <li>Damage resulting from accidents or misuse</li>
+            <li>Straps and bracelets</li>
+            <li>Damage from water if the watch is not properly sealed</li>
+            <li>Batteries after normal life expectancy</li>
+            <li>Servicing by unauthorized repair centers</li>
+          </ul>
+          
+          <h4>Making a Warranty Claim</h4>
+          <p>To make a warranty claim, please visit any of our store locations with:</p>
+          <ol>
+            <li>The original purchase receipt</li>
+            <li>The watch requiring service</li>
+            <li>Completed warranty claim form (available at our stores or downloadable from our website)</li>
+          </ol>
+          
+          <h4>Service Turnaround Time</h4>
+          <p>Standard service times are as follows:</p>
+          <ul>
+            <li>Basic Service: 1-2 weeks</li>
+            <li>Standard Service: 2-4 weeks</li>
+            <li>Complex Repairs: 4-8 weeks</li>
+          </ul>
+          <p>Rush service is available at an additional charge. Please ask for details at our service counter.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn secondary-btn" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn primary-btn">Download Policy</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,246 @@
-<p>technology works!</p>
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Watch Technologies</h2>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active">Technologies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading state -->
+  <div class="loading-container" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p>Loading technology information...</p>
+  </div>
+  
+  <!-- Error message -->
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+  
+  <!-- Main content when data is loaded -->
+  <div class="technology-section" *ngIf="!loading && !error">
+    <div class="container">
+      <!-- Introduction -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="tech-intro">
+            <h3>The Art and Science of Timekeeping</h3>
+            <p>Watch technology has evolved significantly over the centuries, from mechanical marvels to electronic precision and smart connectivity. At Alberto Clocks, we appreciate and offer the full spectrum of horological innovation, from traditional craftsmanship to cutting-edge advancements.</p>
+            <p>Explore the fascinating technologies that power our diverse collection of timepieces.</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Technology Tabs -->
+      <div class="row tech-tabs-container">
+        <div class="col-lg-12">
+          <ul class="nav nav-tabs tech-tabs" role="tablist">
+            <li class="nav-item" *ngFor="let tech of technologies; let i = index">
+              <button class="nav-link" 
+                      [class.active]="i === 0"
+                      [id]="tech.id + '-tab'" 
+                      data-bs-toggle="tab" 
+                      [attr.data-bs-target]="'#' + tech.id" 
+                      type="button" 
+                      role="tab" 
+                      [attr.aria-controls]="tech.id" 
+                      [attr.aria-selected]="i === 0"
+                      (click)="setActiveTab(i)">{{ tech.name }}</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Technology Content -->
+      <div class="tab-content" id="techTabContent">
+        <div class="tab-pane fade" 
+             *ngFor="let tech of technologies; let i = index"
+             [class.show]="i === 0"
+             [class.active]="i === 0"
+             [id]="tech.id" 
+             role="tabpanel" 
+             [attr.aria-labelledby]="tech.id + '-tab'">
+          
+          <div class="row tech-detail">
+            <div class="col-lg-6 col-md-12">
+              <div class="tech-image">
+                <img [src]="tech.image" [alt]="tech.name">
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="tech-info">
+                <h3>{{ tech.name }}</h3>
+                <p>{{ tech.description }}</p>
+                
+                <div class="tech-features">
+                  <h4>Key Features</h4>
+                  <ul>
+                    <li *ngFor="let detail of tech.details">{{ detail }}</li>
+                  </ul>
+                </div>
+                
+                <div class="tech-advantages">
+                  <h4>Advantages</h4>
+                  <ul>
+                    <li *ngFor="let advantage of tech.advantages">{{ advantage }}</li>
+                  </ul>
+                </div>
+                
+                <div class="tech-types">
+                  <h4>Types</h4>
+                  <div class="accordion" [id]="'accordion-' + tech.id">
+                    <div class="accordion-item" *ngFor="let type of tech.types; let j = index">
+                      <h2 class="accordion-header" [id]="'heading-' + tech.id + '-' + j">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + tech.id + '-' + j" aria-expanded="false" [attr.aria-controls]="'collapse-' + tech.id + '-' + j">
+                          {{ type.name }}
+                        </button>
+                      </h2>
+                      <div [id]="'collapse-' + tech.id + '-' + j" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading-' + tech.id + '-' + j" [attr.data-bs-parent]="'#accordion-' + tech.id">
+                        <div class="accordion-body">
+                          {{ type.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Watch Collection Section -->
+          <div class="row tech-collection">
+            <div class="col-lg-12">
+              <h3>Our {{ tech.name }} Collection</h3>
+              <p>Explore our selection of timepieces featuring {{ tech.name }} technology.</p>
+              <div class="text-center">
+                <a [routerLink]="['/products']" [queryParams]="{technology: tech.id}" class="btn browse-btn">
+                  <i class="fa fa-search"></i> Browse Collection
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comparison Table -->
+      <div class="row comparison-section">
+        <div class="col-lg-12">
+          <h3 class="text-center">Technology Comparison</h3>
+          <div class="table-responsive">
+            <table class="table tech-comparison-table">
+              <thead>
+                <tr>
+                  <th>Technology</th>
+                  <th>Accuracy</th>
+                  <th>Power Source</th>
+                  <th>Maintenance</th>
+                  <th>Durability</th>
+                  <th>Ideal For</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tech of technologies">
+                  <td>{{ tech.name }}</td>
+                  <td>
+                    <span *ngIf="tech.id === 'mechanical'">±5-10 seconds/day</span>
+                    <span *ngIf="tech.id === 'quartz'">±15 seconds/month</span>
+                    <span *ngIf="tech.id === 'smart'">Synchronized to phone</span>
+                    <span *ngIf="tech.id === 'spring-drive'">±1 second/day</span>
+                  </td>
+                  <td>
+                    <span *ngIf="tech.id === 'mechanical'">Mainspring</span>
+                    <span *ngIf="tech.id === 'quartz'">Battery</span>
+                    <span *ngIf="tech.id === 'smart'">Rechargeable Battery</span>
+                    <span *ngIf="tech.id === 'spring-drive'">Mainspring</span>
+                  </td>
+                  <td>
+                    <span *ngIf="tech.id === 'mechanical'">Service every 3-5 years</span>
+                    <span *ngIf="tech.id === 'quartz'">Battery change every 1-3 years</span>
+                    <span *ngIf="tech.id === 'smart'">Charging daily, updates</span>
+                    <span *ngIf="tech.id === 'spring-drive'">Service every 3-5 years</span>
+                  </td>
+                  <td>
+                    <span *ngIf="tech.id === 'mechanical'">Lifetime with proper care</span>
+                    <span *ngIf="tech.id === 'quartz'">Very durable</span>
+                    <span *ngIf="tech.id === 'smart'">3-5 years typically</span>
+                    <span *ngIf="tech.id === 'spring-drive'">Lifetime with proper care</span>
+                  </td>
+                  <td>
+                    <span *ngIf="tech.id === 'mechanical'">Collectors, enthusiasts</span>
+                    <span *ngIf="tech.id === 'quartz'">Everyday reliability</span>
+                    <span *ngIf="tech.id === 'smart'">Tech-savvy, fitness enthusiasts</span>
+                    <span *ngIf="tech.id === 'spring-drive'">Luxury collectors</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <!-- FAQ Section -->
+      <div class="row faq-section">
+        <div class="col-lg-12">
+          <h3 class="text-center">Frequently Asked Questions</h3>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                  Which watch technology is the most accurate?
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  In terms of pure timekeeping accuracy, quartz watches typically offer the best performance for the price, with accuracy of about ±15 seconds per month. High-end quartz movements like those with thermocompensation can achieve even better accuracy. Spring Drive technology offers exceptional accuracy for a mechanical-based movement at ±1 second per day. Smart watches that regularly sync with atomic clock time servers will maintain perfect accuracy as long as they can connect.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                  Why are mechanical watches more expensive than quartz?
+                </button>
+              </h2>
+              <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Mechanical watches are typically more expensive due to the craftsmanship, time, and skill required to create and assemble hundreds of tiny parts. Each mechanical movement represents hours of expert labor and often includes hand-finishing. Additionally, mechanical watches are often made with premium materials and are considered luxury items with heritage value. Quartz movements, while more accurate, contain fewer parts and can be mass-produced with less human involvement.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                  How long do smart watches last compared to traditional watches?
+                </button>
+              </h2>
+              <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Traditional watches, especially mechanical ones, can last for generations with proper maintenance. A quality mechanical or quartz watch could easily last 20-50+ years with regular servicing. Smart watches, however, typically have a shorter lifespan of around 3-5 years due to battery degradation, software obsolescence, and the rapid advancement of technology. Additionally, smart watches often can't be repaired in the same way as traditional watches once key components fail.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                  What is the best watch technology for everyday use?
+                </button>
+              </h2>
+              <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  For everyday practicality, quartz watches offer an excellent combination of accuracy, durability, and low maintenance. They're generally more shock-resistant than mechanical watches and don't require winding. Automatic mechanical watches are also good for daily wear as your natural movement keeps them wound. Smart watches excel for those who value fitness tracking and connectivity. The "best" depends on your personal preferences regarding features, aesthetics, and how much maintenance you're willing to perform.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

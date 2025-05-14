@@ -184,7 +184,6 @@
     transform: rotate(-135deg);
   }
   
-  /* Responsive */
   @media (max-width: 991px) {
     .nav-menu {
       position: absolute;
@@ -227,5 +226,12 @@
     
     .menu-trigger {
       display: block;
+   
     }
+  }
+
+  li.nav-item.dropdown:hover ul.dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }

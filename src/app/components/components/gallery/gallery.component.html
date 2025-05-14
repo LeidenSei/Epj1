@@ -1,226 +1,197 @@
-<div class="all-title-box">
+<div class="page-heading header-text">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>Services</h2>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Services</li>
-                </ul>
-            </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Watch Gallery</h2>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+            <li class="breadcrumb-item active">Gallery</li>
+          </ul>
         </div>
+      </div>
     </div>
-</div>
-<!-- End All Title Box -->
-
-<!-- Start Gallery  -->
-<div class="products-box">
+  </div>
+  
+  <div class="gallery-section">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-all text-center">
-                    <h1>Our Gallery</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                </div>
-            </div>
+      <!-- Loading Indicator -->
+      <div class="loading-container" *ngIf="loading">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="special-menu text-center">
-                    <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">All</button>
-                        <button data-filter=".bulbs">Bulbs</button>
-                        <button data-filter=".fruits">Fruits</button>
-                        <button data-filter=".podded-vegetables">Podded vegetables</button>
-                        <button data-filter=".root-and-tuberous">Root and tuberous</button>
-                    </div>
-                </div>
+        <p>Loading gallery...</p>
+      </div>
+  
+      <!-- Error Message -->
+      <div class="alert alert-danger" *ngIf="error">
+        {{ error }}
+      </div>
+  
+      <!-- Gallery Content -->
+      <div class="gallery-content" *ngIf="!loading && !error">
+        <!-- Filter Section -->
+        <div class="row filter-section mb-4">
+          <div class="col-lg-8">
+            <div class="category-filters">
+              <button 
+                class="btn filter-btn" 
+                [class.active]="selectedCategory === 'all'"
+                (click)="filterByCategory('all')">
+                All Watches
+              </button>
+              <ng-container *ngFor="let category of categories">
+                <button 
+                  class="btn filter-btn" 
+                  [class.active]="selectedCategory === category.id"
+                  (click)="filterByCategory(category.id)">
+                  {{ category.name }}
+                </button>
+              </ng-container>
             </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="search-box">
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Search by name or brand..." 
+                [(ngModel)]="searchKeyword"
+                (input)="onSearchChange()">
+              <button class="search-btn" (click)="onSearchChange()">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
         </div>
-
-        <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid bulbs">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="images/gallery-img-01.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
+  
+        <!-- Gallery Grid -->
+        <div class="row gallery-grid">
+          <ng-container *ngIf="paginatedProducts.length === 0">
+            <div class="col-12 text-center no-results">
+              <p>No watches found. Please try a different search or filter.</p>
+            </div>
+          </ng-container>
+          
+          <ng-container *ngFor="let product of paginatedProducts">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="gallery-item" (click)="openProductDetail(product)">
+                <div class="item-image">
+                  <img [src]="product.images[0]" [alt]="product.name" class="img-fluid">
+                  <div class="hover-overlay">
+                    <div class="overlay-content">
+                      <h5>{{ product.name }}</h5>
+                      <span class="brand">{{ product.brand }}</span>
+                      <div class="price-tag">
+                        <ng-container *ngIf="product.discount">
+                          <span class="original-price">${{ product.price }}</span>
+                          <span class="discounted-price">${{ getDiscountedPrice(product) | number:'1.0-0' }}</span>
+                        </ng-container>
+                        <ng-container *ngIf="!product.discount">
+                          <span class="regular-price">${{ product.price }}</span>
+                        </ng-container>
+                      </div>
+                      <span class="view-details">View Details</span>
                     </div>
+                  </div>
+                  <div *ngIf="!product.inStock" class="out-of-stock-badge">
+                    Out of Stock
+                  </div>
+                  <div *ngIf="product.discount" class="discount-badge">
+                    -{{ product.discount }}%
+                  </div>
                 </div>
+              </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 special-grid fruits">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-02.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>                        
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid bulbs">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-03.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>                                
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid fruits">
-                <div class="products-single fix">
-                    <div class="box-img-hover">                            
-                        <img src="images/gallery-img-04.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>                                
-                        </div>
-                    </div>                        
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid bulbs">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-05.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid fruits">
-                <div class="products-single fix">
-                    <div class="box-img-hover">                            
-                        <img src="images/gallery-img-06.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-07.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
-                <div class="products-single fix">
-                    <div class="box-img-hover">                            
-                        <img src="images/gallery-img-08.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>                        
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
-                <div class="products-single fix">
-                    <div class="box-img-hover">                            
-                        <img src="images/gallery-img-09.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-10.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid root-and-tuberous">
-                <div class="products-single fix">
-                    <div class="box-img-hover">                           
-                        <img src="images/gallery-img-11.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>                                
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid podded-vegetables">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <img src="images/gallery-img-12.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>                        
-                </div>
-            </div>
+          </ng-container>
         </div>
+  
+        <!-- Pagination -->
+        <div class="row pagination-section" *ngIf="filteredProducts.length > itemsPerPage">
+          <div class="col-12">
+            <nav aria-label="Gallery pagination">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                  <a class="page-link" href="javascript:void(0)" (click)="changePage(currentPage - 1)">
+                    <i class="fa fa-angle-left"></i>
+                  </a>
+                </li>
+                
+                <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+                  <li class="page-item" [class.active]="currentPage === i + 1">
+                    <a class="page-link" href="javascript:void(0)" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+                  </li>
+                </ng-container>
+                
+                <li class="page-item" [class.disabled]="currentPage === totalPages">
+                  <a class="page-link" href="javascript:void(0)" (click)="changePage(currentPage + 1)">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
+  <!-- Product Detail Modal -->
+  <div class="product-detail-modal" *ngIf="selectedProduct" (click)="closeProductDetail()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ selectedProduct.name }}</h3>
+        <button type="button" class="close-btn" (click)="closeProductDetail()">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="product-images">
+              <div class="main-image">
+                <img [src]="selectedProduct.images[0]" [alt]="selectedProduct.name" class="img-fluid">
+              </div>
+              <div class="thumbnail-images" *ngIf="selectedProduct.images.length > 1">
+                <ng-container *ngFor="let image of selectedProduct.images">
+                  <div class="thumbnail">
+                    <img [src]="image" [alt]="selectedProduct.name" class="img-fluid">
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product-info">
+              <h4>{{ selectedProduct.brand }}</h4>
+              <div class="price-section">
+                <ng-container *ngIf="selectedProduct.discount">
+                  <span class="original-price">${{ selectedProduct.price }}</span>
+                  <span class="discounted-price">${{ getDiscountedPrice(selectedProduct) | number:'1.0-0' }}</span>
+                  <span class="discount-badge">{{ selectedProduct.discount }}% OFF</span>
+                </ng-container>
+                <ng-container *ngIf="!selectedProduct.discount">
+                  <span class="regular-price">${{ selectedProduct.price }}</span>
+                </ng-container>
+              </div>
+              <div class="availability">
+                <span [class]="selectedProduct.inStock ? 'in-stock' : 'out-of-stock'">
+                  {{ selectedProduct.inStock ? 'In Stock' : 'Out of Stock' }}
+                </span>
+              </div>
+              <div class="description">
+                <p>{{ selectedProduct.description }}</p>
+              </div>
+              <div class="actions">
+                <button class="btn btn-primary" [disabled]="!selectedProduct.inStock">
+                  <i class="fa fa-shopping-cart"></i> Add to Cart
+                </button>
+                <a [routerLink]="['/products', selectedProduct.id]" class="btn btn-outline-primary">
+                  <i class="fa fa-info-circle"></i> More Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
