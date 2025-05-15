@@ -30,7 +30,7 @@
         <div class="product-gallery" *ngIf="watch.images.length > 1">
           <div class="row">
             <div class="col-3" *ngFor="let image of watch.images; let i = index">
-              <div class="gallery-item" [class.active]="i === activeImageIndex" (click)="changeImage(i)">
+              <div class="gallery-item" style="width: 165px;height: 165px;" [class.active]="i === activeImageIndex" (click)="changeImage(i)">
                 <img [src]="image" [alt]="watch.name + ' image ' + (i+1)">
               </div>
             </div>

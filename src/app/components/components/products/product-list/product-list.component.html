@@ -27,7 +27,7 @@
         <a class="is_active" href="#!" data-filter="*">All Collections</a>
       </li>
       <li *ngFor="let category of categories">
-        <a href="#!" [attr.data-filter]="'.' + category.id">{{ category.name }}</a>
+        <a href="#!" (click)="filterByCategory(category.id)" [attr.data-filter]="'.' + category.id">{{ category.name }}</a>
       </li>
     </ul>
     <div class="row properties-box">
@@ -35,7 +35,7 @@
            class="col-lg-4 col-md-6 align-self-center mb-30 properties-items {{ watch.categoryId }}">
         <div class="item">
           <a [routerLink]="['/products', watch.id]">
-            <img [src]="watch.images && watch.images.length > 0 ? watch.images[0] : 'assets/images/default-watch.jpg'" [alt]="watch.name">
+            <img style="width: 295px; height: 295px;" [src]="watch.images && watch.images.length > 0 ? watch.images[0] : 'assets/images/default-watch.jpg'" [alt]="watch.name">
           </a>
           <span class="category">{{ watch.brand }}</span>
           <h6>
