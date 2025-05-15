@@ -57,6 +57,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  filterByCategory(categoryId: string) {
+    this.selectedCategory = categoryId;
+    this.filterProducts();
+  }
+
   filterProducts(): void {
     if (this.selectedCategory) {
       this.filteredWatches = this.watches.filter(watch => 

@@ -437,13 +437,700 @@
           "features": ["GPS", "Health Monitoring"]
         },
         "images": [
-          "assets/images/products/garmin-fenix-1.jpg",
-          "assets/images/products/garmin-fenix-2.jpg",
-          "assets/images/products/garmin-fenix-3.jpg"
+          "assets/images/products/garmin-fenix-1.webp",
+          "assets/images/products/garmin-fenix-2.webp",
+          "assets/images/products/garmin-fenix-3.jpg",
+          "assets/images/products/garmin-fenix-4.jpeg"
         ],
         "inStock": true,
         "warranty": "1 year"
-      }
+      },
+
+
+
+
+
+      
+       {
+    "id": "omega-seamaster-diver-300m",
+    "name": "Omega Seamaster Diver 300M",
+    "brand": "Omega",
+    "categoryId": "luxury",
+    "price": 56406,
+    "discount": 5,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/omega-seamaster-diver-300m-1.jpg",
+      "assets/images/products/omega-seamaster-diver-300m-2.jpg",
+      "assets/images/products/omega-seamaster-diver-300m-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "3 years"
+  },
+  {
+    "id": "tag-heuer-carrera",
+    "name": "Tag Heuer Carrera",
+    "brand": "Tag Heuer",
+    "categoryId": "luxury",
+    "price": 54722,
+    "discount": null,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/tag-heuer-carrera-1.jpg",
+      "assets/images/products/tag-heuer-carrera-2.jpg",
+      "assets/images/products/tag-heuer-carrera-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "2 years"
+  },
+  {
+    "id": "breitling-navitimer",
+    "name": "Breitling Navitimer",
+    "brand": "Breitling",
+    "categoryId": "luxury",
+    "price": 20192,
+    "discount": 5,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/breitling-navitimer-1.jpg",
+      "assets/images/products/breitling-navitimer-2.jpg",
+      "assets/images/products/breitling-navitimer-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "3 years"
+  },
+  {
+    "id": "patek-philippe-nautilus",
+    "name": "Patek Philippe Nautilus",
+    "brand": "Patek Philippe",
+    "categoryId": "luxury",
+    "price": 24881,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/patek-philippe-nautilus-1.jpg",
+      "assets/images/products/patek-philippe-nautilus-2.jpg",
+      "assets/images/products/patek-philippe-nautilus-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "3 years"
+  },
+  {
+    "id": "audemars-piguet-royal-oak",
+    "name": "Audemars Piguet Royal Oak",
+    "brand": "Audemars Piguet",
+    "categoryId": "luxury",
+    "price": 58167,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/audemars-piguet-royal-oak-1.jpg",
+      "assets/images/products/audemars-piguet-royal-oak-2.jpg",
+      "assets/images/products/audemars-piguet-royal-oak-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "5 years"
+  },
+  {
+    "id": "cartier-santos",
+    "name": "Cartier Santos",
+    "brand": "Cartier",
+    "categoryId": "luxury",
+    "price": 15900,
+    "discount": 10,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/cartier-santos-1.jpg",
+      "assets/images/products/cartier-santos-2.jpg",
+      "assets/images/products/cartier-santos-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "3 years"
+  },
+  {
+    "id": "hublot-big-bang",
+    "name": "Hublot Big Bang",
+    "brand": "Hublot",
+    "categoryId": "luxury",
+    "price": 49613,
+    "discount": null,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/hublot-big-bang-1.jpg",
+      "assets/images/products/hublot-big-bang-2.jpg",
+      "assets/images/products/hublot-big-bang-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "5 years"
+  },
+  {
+    "id": "iwc-portugieser",
+    "name": "IWC Portugieser",
+    "brand": "IWC",
+    "categoryId": "luxury",
+    "price": 49402,
+    "discount": 5,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/iwc-portugieser-1.jpg",
+      "assets/images/products/iwc-portugieser-2.jpg",
+      "assets/images/products/iwc-portugieser-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "2 years"
+  },
+  {
+    "id": "jaeger-lecoultre-reverso",
+    "name": "Jaeger-LeCoultre Reverso",
+    "brand": "Jaeger-LeCoultre",
+    "categoryId": "luxury",
+    "price": 31304,
+    "discount": 10,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/jaeger-lecoultre-reverso-1.jpg",
+      "assets/images/products/jaeger-lecoultre-reverso-2.jpg",
+      "assets/images/products/jaeger-lecoultre-reverso-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "3 years"
+  },
+  {
+    "id": "panerai-luminor",
+    "name": "Panerai Luminor",
+    "brand": "Panerai",
+    "categoryId": "luxury",
+    "price": 30904,
+    "discount": 5,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/panerai-luminor-1.jpg",
+      "assets/images/products/panerai-luminor-2.jpg",
+      "assets/images/products/panerai-luminor-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "5 years"
+  },
+  {
+    "id": "tudor-black-bay",
+    "name": "Tudor Black Bay",
+    "brand": "Tudor",
+    "categoryId": "luxury",
+    "price": 23784,
+    "discount": null,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/tudor-black-bay-1.jpg",
+      "assets/images/products/tudor-black-bay-2.jpg",
+      "assets/images/products/tudor-black-bay-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "3 years"
+  },
+  {
+    "id": "rolex-daytona",
+    "name": "Rolex Daytona",
+    "brand": "Rolex",
+    "categoryId": "luxury",
+    "price": 53035,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/rolex-daytona-1.jpg",
+      "assets/images/products/rolex-daytona-2.jpg",
+      "assets/images/products/rolex-daytona-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "3 years"
+  },
+  {
+    "id": "longines-hydroconquest",
+    "name": "Longines HydroConquest",
+    "brand": "Longines",
+    "categoryId": "luxury",
+    "price": 38435,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/longines-hydroconquest-1.jpg",
+      "assets/images/products/longines-hydroconquest-2.jpg",
+      "assets/images/products/longines-hydroconquest-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "3 years"
+  },
+  {
+    "id": "zenith-defy",
+    "name": "Zenith Defy",
+    "brand": "Zenith",
+    "categoryId": "luxury",
+    "price": 52243,
+    "discount": null,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/zenith-defy-1.jpg",
+      "assets/images/products/zenith-defy-2.jpg",
+      "assets/images/products/zenith-defy-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "2 years"
+  },
+  {
+    "id": "seiko-prospex",
+    "name": "Seiko Prospex",
+    "brand": "Seiko",
+    "categoryId": "luxury",
+    "price": 30280,
+    "discount": null,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/seiko-prospex-1.jpg",
+      "assets/images/products/seiko-prospex-2.jpg",
+      "assets/images/products/seiko-prospex-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "5 years"
+  },
+  {
+    "id": "grand-seiko-snowflake",
+    "name": "Grand Seiko Snowflake",
+    "brand": "Grand Seiko",
+    "categoryId": "luxury",
+    "price": 10392,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/grand-seiko-snowflake-1.jpg",
+      "assets/images/products/grand-seiko-snowflake-2.jpg",
+      "assets/images/products/grand-seiko-snowflake-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "3 years"
+  },
+  {
+    "id": "tissot-le-locle",
+    "name": "Tissot Le Locle",
+    "brand": "Tissot",
+    "categoryId": "luxury",
+    "price": 40657,
+    "discount": 10,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/tissot-le-locle-1.jpg",
+      "assets/images/products/tissot-le-locle-2.jpg",
+      "assets/images/products/tissot-le-locle-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "2 years"
+  },
+  {
+    "id": "hamilton-khaki-field",
+    "name": "Hamilton Khaki Field",
+    "brand": "Hamilton",
+    "categoryId": "luxury",
+    "price": 20110,
+    "discount": 5,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/hamilton-khaki-field-1.jpg",
+      "assets/images/products/hamilton-khaki-field-2.jpg",
+      "assets/images/products/hamilton-khaki-field-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "5 years"
+  },
+  {
+    "id": "casio-g-shock",
+    "name": "Casio G-Shock",
+    "brand": "Casio",
+    "categoryId": "luxury",
+    "price": 18879,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/casio-g-shock-1.jpg",
+      "assets/images/products/casio-g-shock-2.jpg",
+      "assets/images/products/casio-g-shock-3.jpg"
+    ],
+    "inStock": false,
+    "warranty": "5 years"
+  },
+  {
+    "id": "citizen-eco-drive",
+    "name": "Citizen Eco-Drive",
+    "brand": "Citizen",
+    "categoryId": "luxury",
+    "price": 11398,
+    "discount": 15,
+    "description": "The Rolex Submariner is a classic dive watch that has become an icon of luxury and precision. With its robust design and impeccable craftsmanship, it's both a practical tool watch and a symbol of achievement.",
+    "features": [
+      "Automatic movement with date function",
+      "41mm Oystersteel case",
+      "Water resistant to 300 meters",
+      "Unidirectional rotating bezel",
+      "Scratch-resistant sapphire crystal",
+      "Luminous hour markers and hands"
+    ],
+    "specifications": {
+      "movement": "Automatic",
+      "caseSize": "41mm",
+      "waterResistance": "300m",
+      "material": "Oystersteel",
+      "features": [
+        "Date",
+        "Rotating Bezel"
+      ]
+    },
+    "images": [
+      "assets/images/products/citizen-eco-drive-1.jpg",
+      "assets/images/products/citizen-eco-drive-2.jpg",
+      "assets/images/products/citizen-eco-drive-3.jpg"
+    ],
+    "inStock": true,
+    "warranty": "5 years"
+  }
     ],
     "storeLocations": [
       {
