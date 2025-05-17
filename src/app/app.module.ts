@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SafePipe } from './shared/pipes/safe.pipe';
+import { ProductDetailModalComponent } from './shared/product-detail-modal/product-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SafePipe } from './shared/pipes/safe.pipe';
     GalleryComponent,
     TechnologyComponent,
     SupportComponent,
-    SafePipe
+    SafePipe,
+    ProductDetailModalComponent
   ],
   imports: [
     BrowserModule,

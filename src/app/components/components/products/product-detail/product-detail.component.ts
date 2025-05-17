@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { Watch } from '../../../services/watches.service';
 import { Location } from '@angular/common';
@@ -20,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private dataService: DataService,
     private location: Location,
     private sanitizer: DomSanitizer
@@ -82,5 +83,14 @@ export class ProductDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+  navigateToProduct(productId: string, event?: Event): void {
+    if (event) {
+      event.preventDefault(); 
+    }
+    
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/products', productId]);
+    });
   }
 }

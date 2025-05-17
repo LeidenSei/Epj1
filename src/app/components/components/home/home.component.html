@@ -50,7 +50,6 @@
         <div class="col-lg-4">
           <div class="left-image">
             <img src="assets/images/featured-watch.jpg" alt="Featured Watch">
-            <a [routerLink]="['/products']"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
           </div>
         </div>
         <div class="col-lg-5">
@@ -298,7 +297,7 @@
         <!-- Featured watch items -->
         <div class="col-lg-4 col-md-6" *ngFor="let watch of featuredWatches">
           <div class="item">
-            <a [routerLink]="['/products', watch.id]">
+            <a href="javascript:void(0)" (click)="openWatchDetails(watch)">
               <img [src]="watch.images[0]" [alt]="watch.name">
             </a>
             <span class="category">{{ watch.categoryId === 'luxury' ? 'Luxury Collection' : 
@@ -307,18 +306,18 @@
             <h6>{{ watch.discount ? 
                 ((watch.price * (1 - watch.discount/100)) | currency:'USD':'symbol':'1.0-0') : 
                 (watch.price | currency:'USD':'symbol':'1.0-0') }}</h6>
-            <h4><a [routerLink]="['/products', watch.id]">{{ watch.name }}</a></h4>
+            <h4><a href="javascript:void(0)" (click)="openWatchDetails(watch)">{{ watch.name }}</a></h4>
             <ul>
               <li *ngIf="watch.specifications.movement">Movement: <span>{{ watch.specifications.movement }}</span></li>
               <li *ngIf="watch.specifications.caseSize">Case Size: <span>{{ watch.specifications.caseSize }}</span></li>
               <li *ngIf="watch.specifications.waterResistance">Water Resistance: <span>{{ watch.specifications.waterResistance }}</span></li>
               <li *ngIf="watch.specifications.material">Material: <span>{{ watch.specifications.material }}</span></li>
-              <li *ngIf="watch.specifications.features.length > 0">Features: 
+              <li *ngIf="watch.specifications.features && watch.specifications.features.length > 0">Features: 
                 <span>{{ watch.specifications.features.join(', ') }}</span>
               </li>
             </ul>
             <div class="main-button">
-              <a [routerLink]="['/products', watch.id]">View Details</a>
+              <a href="javascript:void(0)" (click)="openWatchDetails(watch)">View Details</a>
             </div>
           </div>
         </div>
@@ -350,13 +349,11 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="item phone">
-                <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
                 <h6>{{ companyInfo?.contact?.phone || '+84 123 456 7890' }}<br><span>Phone Number</span></h6>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="item email">
-                <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
                 <h6>{{ companyInfo?.contact?.email || 'info@albertoclocks.com' }}<br><span>Business Email</span></h6>
               </div>
             </div>
@@ -410,4 +407,12 @@
     </div>
   </div>
 </div>
+<app-product-detail-modal
+  [watch]="selectedWatch"
+  [category]="selectedCategory"
+  [relatedWatches]="relatedWatches"
+  [loading]="modalLoading"
+  (closeModal)="onCloseModal()"
+  (viewRelatedWatch)="onViewRelatedWatch($event)">
+</app-product-detail-modal>
 

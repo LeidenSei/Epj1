@@ -1,0 +1,111 @@
+
+.modal-xl {
+    max-width: 1140px;
+  }
+  
+  .modal-product-gallery {
+    .gallery-item {
+      border: 2px solid transparent;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      &.active {
+        border-color: #007bff;
+      }
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  .product-details {
+    .category {
+      display: inline-block;
+      font-size: 14px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      
+      .original-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-right: 10px;
+        font-size: 18px;
+      }
+      
+      .discount-badge {
+        background: #ff3a3a;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
+    
+    .specs-list {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: 8px;
+        
+        strong {
+          display: inline-block;
+          min-width: 140px;
+        }
+      }
+    }
+  }
+  
+  .product-tabs {
+    margin-top: 30px;
+    
+    .tab-content {
+      padding: 20px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-top: none;
+    }
+    
+    .features-list {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        padding: 8px 0;
+        border-bottom: 1px dotted #ddd;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  
+  .related-watch-item {
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    h4 {
+      font-size: 16px;
+      margin-top: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }

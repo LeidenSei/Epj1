@@ -24,7 +24,7 @@
   <div class="container">
     <ul class="properties-filter">
       <li>
-        <a class="is_active" href="#!" data-filter="*">All Collections</a>
+        <a class="is_active" href="#!" data-filter="*" (click)="filterByCategory('')">All Collections</a>
       </li>
       <li *ngFor="let category of categories">
         <a href="#!" (click)="filterByCategory(category.id)" [attr.data-filter]="'.' + category.id">{{ category.name }}</a>
@@ -32,33 +32,35 @@
     </ul>
     <div class="row properties-box">
       <div *ngFor="let watch of filteredWatches" 
-           class="col-lg-4 col-md-6 align-self-center mb-30 properties-items {{ watch.categoryId }}">
-        <div class="item">
-          <a [routerLink]="['/products', watch.id]">
-            <img style="width: 295px; height: 295px;" [src]="watch.images && watch.images.length > 0 ? watch.images[0] : 'assets/images/default-watch.jpg'" [alt]="watch.name">
-          </a>
-          <span class="category">{{ watch.brand }}</span>
-          <h6>
-            <span *ngIf="watch.discount" class="discount">{{ watch.price | currency:'USD':'symbol':'1.0-0' }}</span>
-            {{ watch.discount ? 
-              ((watch.price * (1 - watch.discount/100)) | currency:'USD':'symbol':'1.0-0') : 
-              (watch.price | currency:'USD':'symbol':'1.0-0') }}
-          </h6>
-          <h4><a [routerLink]="['/products', watch.id]">{{ watch.name }}</a></h4>
-          <ul>
-            <li *ngIf="watch.specifications.movement">Movement: <span>{{ watch.specifications.movement }}</span></li>
-            <li *ngIf="watch.specifications.caseSize">Case Size: <span>{{ watch.specifications.caseSize }}</span></li>
-            <li *ngIf="watch.specifications.waterResistance">Water Resistance: <span>{{ watch.specifications.waterResistance }}</span></li>
-            <li *ngIf="watch.specifications.material">Material: <span>{{ watch.specifications.material }}</span></li>
-            <li>Warranty: <span>{{ watch.warranty }}</span></li>
-            <li>Availability: <span [class.text-success]="watch.inStock" [class.text-danger]="!watch.inStock">
-              {{ watch.inStock ? 'In Stock' : 'Out of Stock' }}
-            </span></li>
-          </ul>
-          <div class="main-button">
-            <a [routerLink]="['/products', watch.id]">View Details</a>
+        class="col-lg-4 col-md-6 align-self-center mb-30 properties-items {{ watch.categoryId }}">
+          <div class="item">
+            <a href="javascript:void(0)" (click)="openWatchDetails(watch)">
+              <img style="width: 295px; height: 295px; object-fit: contain;" 
+                    [src]="watch.images && watch.images.length > 0 ? watch.images[0] : 'assets/images/default-watch.jpg'" 
+                    [alt]="watch.name">
+            </a>
+            <span class="category">{{ watch.brand }}</span>
+            <h6>
+              <span *ngIf="watch.discount" class="discount">{{ watch.price | currency:'USD':'symbol':'1.0-0' }}</span>
+              {{ watch.discount ?
+                  ((watch.price * (1 - watch.discount/100)) | currency:'USD':'symbol':'1.0-0') :
+                  (watch.price | currency:'USD':'symbol':'1.0-0') }}
+            </h6>
+            <h4><a href="javascript:void(0)" (click)="openWatchDetails(watch)">{{ watch.name }}</a></h4>
+            <ul>
+              <li *ngIf="watch.specifications.movement">Movement: <span>{{ watch.specifications.movement }}</span></li>
+              <li *ngIf="watch.specifications.caseSize">Case Size: <span>{{ watch.specifications.caseSize }}</span></li>
+              <li *ngIf="watch.specifications.waterResistance">Water Resistance: <span>{{ watch.specifications.waterResistance }}</span></li>
+              <li *ngIf="watch.specifications.material">Material: <span>{{ watch.specifications.material }}</span></li>
+              <li>Warranty: <span>{{ watch.warranty }}</span></li>
+              <li>Availability: <span [class.text-success]="watch.inStock" [class.text-danger]="!watch.inStock">
+                {{ watch.inStock ? 'In Stock' : 'Out of Stock' }}
+              </span></li>
+            </ul>
+            <div class="main-button">
+              <a href="javascript:void(0)" (click)="openWatchDetails(watch)">View Details</a>
+            </div>
           </div>
-        </div>
       </div>
     </div>
     
@@ -79,3 +81,11 @@
     </div>
   </div>
 </div>
+<app-product-detail-modal
+  [watch]="selectedWatch"
+  [category]="selectedWatchCategory"
+  [relatedWatches]="relatedWatches"
+  [loading]="modalLoading"
+  (closeModal)="onCloseModal()"
+  (viewRelatedWatch)="onViewRelatedWatch($event)">
+</app-product-detail-modal>
