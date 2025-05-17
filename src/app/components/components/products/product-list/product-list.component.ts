@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { Watch } from '../../../services/watches.service';
+import { ProductDetailModalComponent } from 'src/app/shared/product-detail-modal/product-detail-modal.component';
+import { ProductModalService } from 'src/app/components/services/product-modal.service';
 
 declare var $: any;
 
@@ -11,6 +13,7 @@ declare var $: any;
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, AfterViewInit {
+  @ViewChild(ProductDetailModalComponent) productModal!: ProductDetailModalComponent;
   watches: Watch[] = [];
   filteredWatches: Watch[] = [];
   categories: any[] = [];
@@ -20,13 +23,16 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   loading: boolean = true;
   error: string = '';
   Math = Math;
-
+  selectedWatch: Watch | null = null;
+  selectedWatchCategory: any = null;
+  relatedWatches: Watch[] = [];
+  modalLoading: boolean = false;
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private productModalService: ProductModalService
   ) { }
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.selectedCategory = params['category'] || '';
@@ -35,6 +41,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.initializeIsotope();
+    }, 100);
   }
 
   loadProducts(): void {
@@ -59,7 +68,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   filterByCategory(categoryId: string) {
     this.selectedCategory = categoryId;
-    this.currentPage = 1;
+    this.currentPage = 1; 
     this.filterProducts();
     
     this.router.navigate([], {
@@ -70,34 +79,25 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
   
   filterProducts(): void {
+    let filteredList = this.watches;
+    
     if (this.selectedCategory) {
-      const filteredList = this.watches.filter(watch => 
+      filteredList = this.watches.filter(watch => 
         watch.categoryId === this.selectedCategory
       );
-      
-      const totalFilteredItems = filteredList.length;
-      const totalFilteredPages = Math.ceil(totalFilteredItems / this.itemsPerPage);
-      
-      if (this.currentPage > totalFilteredPages && totalFilteredPages > 0) {
-        this.currentPage = 1;
-      }
-      
-      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      const endIndex = Math.min(startIndex + this.itemsPerPage, totalFilteredItems);
-      this.filteredWatches = filteredList.slice(startIndex, endIndex);
-    } else {
-      const totalItems = this.watches.length;
-      const totalPages = Math.ceil(totalItems / this.itemsPerPage);
-      
-      if (this.currentPage > totalPages && totalPages > 0) {
-        this.currentPage = 1;
-      }
-      
-      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      const endIndex = Math.min(startIndex + this.itemsPerPage, totalItems);
-      this.filteredWatches = this.watches.slice(startIndex, endIndex);
     }
     
+    const totalItems = filteredList.length;
+    const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+    
+    if (this.currentPage > totalPages && totalPages > 0) {
+      this.currentPage = 1;
+    }
+    
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = Math.min(startIndex + this.itemsPerPage, totalItems);
+    this.filteredWatches = filteredList.slice(startIndex, endIndex);
+
     setTimeout(() => {
       this.initializeIsotope();
     }, 100);
@@ -161,5 +161,33 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     if (productsGrid.length && productsGrid.data('isotope')) {
       productsGrid.isotope('destroy');
     }
+  }
+  openWatchDetails(watch: Watch): void {
+    this.modalLoading = true;
+    this.selectedWatch = watch;
+    
+    this.productModalService.getProductDetail(watch.id).subscribe({
+      next: (data) => {
+        this.selectedWatch = data.product;
+        this.selectedWatchCategory = data.category;
+        this.relatedWatches = data.relatedProducts;
+        this.modalLoading = false;
+
+        this.productModal.show();
+      },
+      error: (err) => {
+        this.error = 'Cannot load product details. Please try again later.';
+        this.modalLoading = false;
+        console.error('Error loading product details:', err);
+      }
+    });
+  }
+  
+  onCloseModal(): void {
+    this.selectedWatch = null;
+  }
+  
+  onViewRelatedWatch(watch: Watch): void {
+    this.openWatchDetails(watch);
   }
 }

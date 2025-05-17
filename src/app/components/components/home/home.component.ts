@@ -1,11 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+// home.component.ts
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { WatchesService, Watch, Category } from '../../services/watches.service';
 import { CompanyService, Statistics } from '../../services/company.service';
 import { Router } from '@angular/router';
 import { Testimonial, TestimonialsService } from '../../services/testimonial.service';
+import { ProductModalService } from '../../services/product-modal.service';
 import Swal from 'sweetalert2';
+import { ProductDetailModalComponent } from 'src/app/shared/product-detail-modal/product-detail-modal.component';
 
 declare var $: any;
 
@@ -15,6 +18,8 @@ declare var $: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild(ProductDetailModalComponent) productModal!: ProductDetailModalComponent;
+  
   featuredWatches: Watch[] = [];
   categories: Category[] = [];
   statistics: Statistics | null = null;
@@ -23,12 +28,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   loading = true;
   error = '';
   contactForm: FormGroup;
+  
+  selectedWatch: Watch | null = null;
+  selectedCategory: any = null;
+  relatedWatches: Watch[] = [];
+  modalLoading: boolean = false;
 
   constructor(
     private dataService: DataService,
     private watchesService: WatchesService,
     private companyService: CompanyService,
     private testimonialsService: TestimonialsService,
+    private productModalService: ProductModalService,
     private router: Router,
     private fb: FormBuilder
   ) { }
@@ -88,6 +99,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  
+  openWatchDetails(watch: Watch): void {
+    this.modalLoading = true;
+    this.selectedWatch = watch;
+    
+    this.productModalService.getProductDetail(watch.id).subscribe({
+      next: (data) => {
+        this.selectedWatch = data.product;
+        this.selectedCategory = data.category;
+        this.relatedWatches = data.relatedProducts;
+        this.modalLoading = false;
+        
+        this.productModal.show();
+      },
+      error: (err) => {
+        this.error = 'Cannot load product details. Please try again later.';
+        this.modalLoading = false;
+        console.error('Error loading product details:', err);
+      }
+    });
+  }
+  
+  onCloseModal(): void {
+    this.selectedWatch = null;
+  }
+  
+  onViewRelatedWatch(watch: Watch): void {
+    this.openWatchDetails(watch);
+  }
+
   initializeTabs(): void {
     const firstTab = document.querySelector('.nav-tabs .nav-link.active');
     if (firstTab) {
@@ -131,10 +172,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   navigateToCategory(categoryId: string): void {
     this.router.navigate(['/products'], { queryParams: { category: categoryId } });
-  }
-
-  navigateToProductDetail(productId: string): void {
-    this.router.navigate(['/products', productId]);
   }
 
   private handleError(error: any): void {
