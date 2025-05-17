@@ -24,7 +24,7 @@
   <div class="container">
     <ul class="properties-filter">
       <li>
-        <a class="is_active" href="#!" data-filter="*">All Collections</a>
+        <a class="is_active" href="#!" data-filter="*" (click)="filterByCategory('')">All Collections</a>
       </li>
       <li *ngFor="let category of categories">
         <a href="#!" (click)="filterByCategory(category.id)" [attr.data-filter]="'.' + category.id">{{ category.name }}</a>

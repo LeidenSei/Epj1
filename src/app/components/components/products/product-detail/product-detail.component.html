@@ -30,9 +30,13 @@
         <div class="product-gallery" *ngIf="watch.images.length > 1">
           <div class="row">
             <div class="col-3" *ngFor="let image of watch.images; let i = index">
-              <div class="gallery-item" style="width: 165px;height: 165px;" [class.active]="i === activeImageIndex" (click)="changeImage(i)">
-                <img [src]="image" [alt]="watch.name + ' image ' + (i+1)">
-              </div>
+              <div class="gallery-item" 
+                  style="width: 165px; height: 165px; overflow: hidden; cursor: pointer;" 
+                  [class.active]="i === activeImageIndex" 
+                  (click)="changeImage(i)">
+              <img [src]="image" [alt]="watch.name + ' image ' + (i+1)" 
+                    style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             </div>
           </div>
         </div>
@@ -146,8 +150,11 @@
         <div class="row related-products">
           <div class="col-lg-3 col-md-6" *ngFor="let relatedWatch of relatedWatches">
             <div class="item">
-              <a [routerLink]="['/products', relatedWatch.id]">
-                <img [src]="relatedWatch.images[0]" [alt]="relatedWatch.name">
+              <a [routerLink]="['/products', relatedWatch.id]" (click)="navigateToProduct(relatedWatch.id, $event)">
+                <div style="width: 100%; height: 200px; overflow: hidden; margin-bottom: 15px;">
+                  <img [src]="relatedWatch.images[0]" [alt]="relatedWatch.name" 
+                       style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
               </a>
               <span class="category">{{ relatedWatch.brand }}</span>
               <h5 *ngIf="!relatedWatch.discount">{{ relatedWatch.price | currency:'USD':'symbol':'1.0-0' }}</h5>
@@ -155,9 +162,9 @@
                 <span class="original-price">{{ relatedWatch.price | currency:'USD':'symbol':'1.0-0' }}</span>
                 <span class="discounted-price">{{ getDiscountedPrice(relatedWatch.price, relatedWatch.discount) | currency:'USD':'symbol':'1.0-0' }}</span>
               </h5>
-              <h4><a [routerLink]="['/products', relatedWatch.id]">{{ relatedWatch.name }}</a></h4>
+              <h4><a [routerLink]="['/products', relatedWatch.id]" (click)="navigateToProduct(relatedWatch.id, $event)">{{ relatedWatch.name }}</a></h4>
               <div class="icon-button">
-                <a [routerLink]="['/products', relatedWatch.id]">
+                <a [routerLink]="['/products', relatedWatch.id]" (click)="navigateToProduct(relatedWatch.id, $event)">
                   <i class="fa fa-eye"></i> View Details
                 </a>
               </div>

@@ -59,49 +59,86 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   filterByCategory(categoryId: string) {
     this.selectedCategory = categoryId;
+    this.currentPage = 1;
     this.filterProducts();
+    
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { category: categoryId || null },
+      queryParamsHandling: 'merge'
+    });
   }
-
+  
   filterProducts(): void {
     if (this.selectedCategory) {
-      this.filteredWatches = this.watches.filter(watch => 
+      const filteredList = this.watches.filter(watch => 
         watch.categoryId === this.selectedCategory
       );
+      
+      const totalFilteredItems = filteredList.length;
+      const totalFilteredPages = Math.ceil(totalFilteredItems / this.itemsPerPage);
+      
+      if (this.currentPage > totalFilteredPages && totalFilteredPages > 0) {
+        this.currentPage = 1;
+      }
+      
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = Math.min(startIndex + this.itemsPerPage, totalFilteredItems);
+      this.filteredWatches = filteredList.slice(startIndex, endIndex);
     } else {
-      this.filteredWatches = [...this.watches];
+      const totalItems = this.watches.length;
+      const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+      
+      if (this.currentPage > totalPages && totalPages > 0) {
+        this.currentPage = 1;
+      }
+      
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = Math.min(startIndex + this.itemsPerPage, totalItems);
+      this.filteredWatches = this.watches.slice(startIndex, endIndex);
     }
-
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.filteredWatches = this.filteredWatches.slice(startIndex, endIndex);
+    
+    setTimeout(() => {
+      this.initializeIsotope();
+    }, 100);
   }
 
   initializeIsotope(): void {
     if ($ && $.fn.isotope) {
       const productsGrid = $('.properties-box');
       if (productsGrid.length) {
+        if (productsGrid.data('isotope')) {
+          productsGrid.isotope('destroy');
+        }
+        
         productsGrid.isotope({
           itemSelector: '.properties-items',
           layoutMode: 'fitRows'
         });
-
-        $('.properties-filter li a').on('click', function() {
+        
+        $('.properties-filter li a').removeClass('is_active');
+        
+        if (this.selectedCategory) {
+          $(`.properties-filter li a[data-filter=".${this.selectedCategory}"]`).addClass('is_active');
+          productsGrid.isotope({ filter: `.${this.selectedCategory}` });
+        } else {
+          $('.properties-filter li a[data-filter="*"]').addClass('is_active');
+          productsGrid.isotope({ filter: '*' });
+        }
+        
+        $('.properties-filter li a').off('click').on('click', function() {
           const filterValue = $(this).attr('data-filter');
           productsGrid.isotope({ filter: filterValue });
-
+          
           $('.properties-filter li a').removeClass('is_active');
           $(this).addClass('is_active');
           return false;
         });
-        if (this.selectedCategory) {
-          $(`.properties-filter li a[data-filter=".${this.selectedCategory}"]`).trigger('click');
-        }
       }
     } else {
       console.warn('Isotope not available. Make sure to include the library.');
     }
   }
-
   changePage(page: number): void {
     this.currentPage = page;
     this.filterProducts(); 
@@ -118,5 +155,11 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   navigateToProductDetail(productId: string): void {
     this.router.navigate(['/products', productId]);
+  }
+  ngOnDestroy(): void {
+    const productsGrid = $('.properties-box');
+    if (productsGrid.length && productsGrid.data('isotope')) {
+      productsGrid.isotope('destroy');
+    }
   }
 }
